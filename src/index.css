@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+}
+
+/* Custom Geometric Accent Grid & Triangle Patterns inspired by Pragmatto Logo */
+.pragmatto-geo-pattern {
+  background-color: #0C1E38;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(0, 168, 232, 0.12) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(22, 91, 181, 0.2) 0px, transparent 50%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.02) 25%, transparent 25%),
+    linear-gradient(225deg, rgba(255, 255, 255, 0.02) 25%, transparent 25%);
+  background-size: 100% 100%, 100% 100%, 60px 60px, 60px 60px;
+}
+
+.pragmatto-light-geo {
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(0, 168, 232, 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(22, 91, 181, 0.05) 0%, transparent 40%);
+}
+
+/* Glassmorphic Cards */
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.glass-card-dark {
+  background: rgba(12, 30, 56, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 168, 232, 0.15);
+}
+
+/* Subtle Geometric Decorative Triangles */
+.geo-triangle-top-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-top: 120px solid rgba(0, 168, 232, 0.08);
+  border-left: 120px solid transparent;
+  pointer-events: none;
+}
+
+.geo-triangle-bottom-left {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-bottom: 120px solid rgba(22, 91, 181, 0.08);
+  border-right: 120px solid transparent;
+  pointer-events: none;
+}
+
+/* Smooth Transitions */
+.transition-smooth {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
