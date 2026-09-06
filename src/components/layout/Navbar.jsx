@@ -51,7 +51,7 @@ export function Navbar({ currentPage, onNavigate }) {
             <img
               src={PRAGMATTO_LOGO_URL}
               alt="Pragmatto Solutions official logo"
-              className="h-20 sm:h-24 lg:h-36 max-h-[140px] w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]"
+              className="h-20 sm:h-24 lg:h-24 max-h-[200px] w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]"
             />
           </div>
 
