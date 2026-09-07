@@ -2,11 +2,13 @@ import React, { useState, useRef } from 'react';
 import { siteContent } from '../data/siteContent';
 import { Badge } from '../components/ui/Badge';
 import { Button } from '../components/ui/Button';
-import { Mail, Linkedin, Send, CheckCircle2, ShieldCheck, Clock, Paperclip, UploadCloud, FileText, X } from 'lucide-react';
+import { Mail, Linkedin, Send, CheckCircle2, ShieldCheck, Clock, Paperclip, UploadCloud, FileText, X, AlertCircle, Loader2 } from 'lucide-react';
 
 export function ContactPage() {
   const { company } = siteContent;
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
   const [attachedFile, setAttachedFile] = useState(null);
   const fileInputRef = useRef(null);
 
@@ -18,11 +20,31 @@ export function ContactPage() {
     message: ''
   });
 
+  const ALLOWED_EXTENSIONS = ['.pdf', '.docx', '.txt', '.zip', '.png', '.jpg', '.jpeg'];
+  const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
+
   const handleFileChange = (e) => {
+    setErrorMsg('');
     const file = e.target.files[0];
-    if (file) {
-      setAttachedFile(file);
+    if (!file) return;
+
+    const fileExt = '.' + file.name.split('.').pop().toLowerCase();
+
+    if (!ALLOWED_EXTENSIONS.includes(fileExt)) {
+      setErrorMsg(`Invalid file type "${fileExt}". Allowed attachment formats are: PDF, DOCX, TXT, ZIP, PNG, JPG.`);
+      e.target.value = '';
+      setAttachedFile(null);
+      return;
     }
+
+    if (file.size > MAX_FILE_SIZE) {
+      setErrorMsg('File size exceeds the 10MB maximum limit.');
+      e.target.value = '';
+      setAttachedFile(null);
+      return;
+    }
+
+    setAttachedFile(file);
   };
 
   const handleRemoveFile = () => {
@@ -32,10 +54,47 @@ export function ContactPage() {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.name || !formData.email || !formData.message) return;
-    setSubmitted(true);
+    setErrorMsg('');
+
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+      setErrorMsg('Please fill in all required fields (Full Name, Email, and Message).');
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const payload = new FormData();
+      payload.append('name', formData.name.trim());
+      payload.append('email', formData.email.trim());
+      payload.append('companyName', formData.companyName.trim());
+      payload.append('serviceNeeded', formData.serviceNeeded);
+      payload.append('message', formData.message.trim());
+
+      if (attachedFile) {
+        payload.append('file', attachedFile);
+      }
+
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        body: payload
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setSubmitted(true);
+      } else {
+        setErrorMsg(data.error || 'Failed to submit inquiry. Please try again or email info@pragmatto.com directly.');
+      }
+    } catch (err) {
+      console.error('Contact form submission error:', err);
+      setErrorMsg('Network or server connection error. Please try again or email info@pragmatto.com directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -136,7 +195,7 @@ export function ContactPage() {
 
             </div>
 
-            {/* Interactive Form with File Attachment Option */}
+            {/* Interactive Form with Secure File Attachment Option */}
             <div className="lg:col-span-7 bg-white rounded-3xl p-8 sm:p-12 border border-slate-200/80 shadow-xl">
               <h3 className="text-2xl sm:text-3xl font-bold text-pragmatto-navy mb-2">
                 Send Us a Message
@@ -145,21 +204,52 @@ export function ContactPage() {
                 Tell us about your remote engineering or software staffing requirements. You can also attach project briefs or specs below.
               </p>
 
+              {/* Error Message Banner */}
+              {errorMsg && (
+                <div className="mb-6 p-4 rounded-2xl bg-red-50 border border-red-200 flex items-start gap-3 text-red-800 text-sm font-medium animate-in fade-in duration-200">
+                  <AlertCircle className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
+                  <div className="flex-grow">
+                    <p>{errorMsg}</p>
+                  </div>
+                  <button 
+                    onClick={() => setErrorMsg('')}
+                    className="text-red-500 hover:text-red-700 p-1"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                </div>
+              )}
+
               {submitted ? (
                 <div className="p-8 rounded-2xl bg-emerald-50 border border-emerald-200 text-center space-y-4">
                   <CheckCircle2 className="w-12 h-12 text-emerald-600 mx-auto animate-bounce" />
                   <h4 className="text-2xl font-bold text-emerald-900">Message & Files Received!</h4>
                   <p className="text-emerald-700 text-base">
-                    Thank you for reaching out to Pragmatto Solutions. Your dedicated U.S. account manager will contact you shortly at <span className="font-bold">{formData.email}</span>.
+                    Thank you for reaching out to Pragmatto Solutions. Your inquiry has been routed to <span className="font-bold">info@pragmatto.com</span> and a U.S. account manager will contact you shortly at <span className="font-bold">{formData.email}</span>.
                   </p>
                   {attachedFile && (
-                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-emerald-100 text-emerald-800 text-xs font-semibold">
+                    <div className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-emerald-100 text-emerald-800 text-xs font-semibold">
                       <FileText className="w-4 h-4 text-emerald-600" />
-                      Attached: {attachedFile.name}
+                      Attached: {attachedFile.name} ({(attachedFile.size / 1024).toFixed(1)} KB)
                     </div>
                   )}
                   <div className="pt-2">
-                    <Button variant="secondary" size="sm" onClick={() => { setSubmitted(false); setAttachedFile(null); }}>
+                    <Button 
+                      variant="secondary" 
+                      size="sm" 
+                      onClick={() => {
+                        setSubmitted(false);
+                        setAttachedFile(null);
+                        setErrorMsg('');
+                        setFormData({
+                          name: '',
+                          email: '',
+                          companyName: '',
+                          serviceNeeded: 'ERP Implementation & Support',
+                          message: ''
+                        });
+                      }}
+                    >
                       Send Another Message
                     </Button>
                   </div>
@@ -175,10 +265,11 @@ export function ContactPage() {
                       <input
                         type="text"
                         required
+                        disabled={isSubmitting}
                         placeholder="John Doe"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full px-4 py-3.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-pragmatto-blue focus:border-pragmatto-blue outline-none text-sm"
+                        className="w-full px-4 py-3.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-pragmatto-blue focus:border-pragmatto-blue outline-none text-sm disabled:bg-slate-50"
                       />
                     </div>
 
@@ -189,10 +280,11 @@ export function ContactPage() {
                       <input
                         type="email"
                         required
+                        disabled={isSubmitting}
                         placeholder="john@company.com"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full px-4 py-3.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-pragmatto-blue focus:border-pragmatto-blue outline-none text-sm"
+                        className="w-full px-4 py-3.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-pragmatto-blue focus:border-pragmatto-blue outline-none text-sm disabled:bg-slate-50"
                       />
                     </div>
                   </div>
@@ -204,10 +296,11 @@ export function ContactPage() {
                       </label>
                       <input
                         type="text"
+                        disabled={isSubmitting}
                         placeholder="Acme Corp"
                         value={formData.companyName}
                         onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
-                        className="w-full px-4 py-3.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-pragmatto-blue focus:border-pragmatto-blue outline-none text-sm"
+                        className="w-full px-4 py-3.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-pragmatto-blue focus:border-pragmatto-blue outline-none text-sm disabled:bg-slate-50"
                       />
                     </div>
 
@@ -216,9 +309,10 @@ export function ContactPage() {
                         Primary Area of Interest
                       </label>
                       <select
+                        disabled={isSubmitting}
                         value={formData.serviceNeeded}
                         onChange={(e) => setFormData({ ...formData, serviceNeeded: e.target.value })}
-                        className="w-full px-4 py-3.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-pragmatto-blue focus:border-pragmatto-blue outline-none text-sm bg-white"
+                        className="w-full px-4 py-3.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-pragmatto-blue focus:border-pragmatto-blue outline-none text-sm bg-white disabled:bg-slate-50"
                       >
                         <option>ERP Implementation & Support</option>
                         <option>CRM & Salesforce Solutions</option>
@@ -236,10 +330,11 @@ export function ContactPage() {
                     <textarea
                       required
                       rows={4}
+                      disabled={isSubmitting}
                       placeholder="Describe your current tech stack, team goals, or required engineer skills..."
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full px-4 py-3.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-pragmatto-blue focus:border-pragmatto-blue outline-none text-sm"
+                      className="w-full px-4 py-3.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-pragmatto-blue focus:border-pragmatto-blue outline-none text-sm disabled:bg-slate-50"
                     />
                   </div>
 
@@ -252,8 +347,9 @@ export function ContactPage() {
                     <input
                       type="file"
                       ref={fileInputRef}
+                      disabled={isSubmitting}
                       onChange={handleFileChange}
-                      accept=".pdf,.doc,.docx,.txt,.zip,.png,.jpg,.jpeg"
+                      accept=".pdf,.docx,.txt,.zip,.png,.jpg,.jpeg"
                       className="hidden"
                       id="file-upload-input"
                     />
@@ -276,6 +372,7 @@ export function ContactPage() {
 
                         <button
                           type="button"
+                          disabled={isSubmitting}
                           onClick={handleRemoveFile}
                           className="p-1.5 rounded-lg text-slate-400 hover:text-red-500 hover:bg-slate-200/60 transition-colors"
                           aria-label="Remove attached file"
@@ -295,7 +392,7 @@ export function ContactPage() {
                           Click to browse and attach files from computer
                         </p>
                         <p className="text-xs text-slate-400 mt-1">
-                          Supports PDF, DOCX, TXT, ZIP, PNG, JPG (Max 10MB)
+                          Allowed: PDF, DOCX, TXT, ZIP, PNG, JPG (Max 10MB)
                         </p>
                       </label>
                     )}
@@ -305,10 +402,18 @@ export function ContactPage() {
                     type="submit"
                     variant="primary"
                     size="lg"
+                    disabled={isSubmitting}
                     className="w-full font-bold"
-                    icon={Send}
+                    icon={isSubmitting ? Loader2 : Send}
                   >
-                    Submit Request
+                    {isSubmitting ? (
+                      <span className="flex items-center gap-2">
+                        <Loader2 className="w-5 h-5 animate-spin" />
+                        Submitting Request...
+                      </span>
+                    ) : (
+                      'Submit Request'
+                    )}
                   </Button>
 
                 </form>

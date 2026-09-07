@@ -55,7 +55,6 @@ export function Navbar({ currentPage, onNavigate }) {
             />
           </div>
 
-          {/* Desktop Navigation Links */}
           <nav className="hidden md:flex items-center space-x-8 lg:space-x-10">
             {navLinks.map((link) => {
               const isActive = currentPage === link.id;
@@ -78,7 +77,6 @@ export function Navbar({ currentPage, onNavigate }) {
             })}
           </nav>
 
-          {/* CTA Button */}
           <div className="hidden md:flex items-center space-x-4 shrink-0">
             <Button
               variant="primary"
@@ -90,7 +88,6 @@ export function Navbar({ currentPage, onNavigate }) {
             </Button>
           </div>
 
-          {/* Mobile Hamburger Button */}
           <div className="flex md:hidden items-center">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
