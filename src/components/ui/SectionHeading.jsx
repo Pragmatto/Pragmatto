@@ -16,14 +16,18 @@ export function SectionHeading({
 
   return (
     <div className={`space-y-4 mb-12 sm:mb-16 ${alignClasses[align] || alignClasses.center} ${className}`}>
-      {badge && <Badge variant={dark ? 'dark' : 'cyan'}>{badge}</Badge>}
+      {badge && (
+        <div>
+          <Badge variant={dark ? 'dark' : 'cyan'}>{badge}</Badge>
+        </div>
+      )}
       {title && (
-        <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight ${dark ? 'text-white' : 'text-pragmatto-navy'}`}>
+        <h2 className={`text-3xl sm:text-4xl lg:text-[44px] font-extrabold tracking-tight leading-[1.2] ${dark ? 'text-white' : 'text-pragmatto-navy'}`}>
           {title}
         </h2>
       )}
       {subtitle && (
-        <p className={`text-lg sm:text-xl font-normal leading-relaxed ${dark ? 'text-slate-300' : 'text-slate-600'}`}>
+        <p className={`text-base sm:text-lg lg:text-xl font-normal leading-relaxed ${dark ? 'text-slate-300' : 'text-slate-600'}`}>
           {subtitle}
         </p>
       )}

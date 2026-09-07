@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { PRAGMATTO_LOGO_URL } from "../../data/siteContent";
-import { Button } from "../ui/Button";
-import { Menu, X } from "lucide-react";
+import React, { useState, useEffect } from 'react';
+import { PRAGMATTO_LOGO_URL } from '../../data/siteContent';
+import { Button } from '../ui/Button';
+import { Menu, X, ChevronRight } from 'lucide-react';
 
 export function Navbar({ currentPage, onNavigate }) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -15,16 +15,16 @@ export function Navbar({ currentPage, onNavigate }) {
         setIsScrolled(false);
       }
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const navLinks = [
-    { id: "home", label: "Home" },
-    { id: "services", label: "Services" },
-    { id: "about", label: "About" },
-    { id: "careers", label: "Careers" },
-    { id: "privacy-policy", label: "Privacy Policy" },
+    { id: 'home', label: 'Home' },
+    { id: 'services', label: 'Services' },
+    { id: 'about', label: 'About' },
+    { id: 'careers', label: 'Careers' },
+    { id: 'privacy-policy', label: 'Privacy Policy' },
   ];
 
   const handleNavClick = (id) => {
@@ -32,73 +32,70 @@ export function Navbar({ currentPage, onNavigate }) {
       onNavigate(id);
     }
     setMobileMenuOpen(false);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <header
-      className={`sticky top-0 z-40 transition-all duration-300 bg-white border-b border-slate-100 ${
-        isScrolled ? "shadow-md py-3 sm:py-4" : "py-4 sm:py-6"
-      }`}
-    >
-      <div className=" max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header className={`sticky top-0 z-40 transition-all duration-300 ${
+      isScrolled 
+        ? 'bg-white/95 backdrop-blur-md shadow-glass border-b border-slate-100 py-3.5 sm:py-4' 
+        : 'bg-white py-4 sm:py-6 border-b border-slate-100'
+    }`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between gap-8">
-          {/* Logo Section - Matching exact large reference size requested by user */}
-          <div
-            onClick={() => handleNavClick("home")}
+          
+          {/* Official Pragmatto Logo - Prominent sizing & aspect ratio */}
+          <div 
+            onClick={() => handleNavClick('home')}
             className="cursor-pointer flex items-center shrink-0 group py-1"
           >
             <img
               src={PRAGMATTO_LOGO_URL}
               alt="Pragmatto Solutions official logo"
-              className="h-20 sm:h-24 lg:h-24 max-h-[200px] w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]"
+              className="h-20 sm:h-24 lg:h-28 max-h-[110px] w-auto object-contain transition-transform duration-300 group-hover:scale-[1.02]"
             />
           </div>
 
-          <nav className="hidden md:flex items-center space-x-8 lg:space-x-10">
+          {/* Desktop Navigation Links */}
+          <nav className="hidden md:flex items-center space-x-1 lg:space-x-2 bg-slate-50/80 p-1.5 rounded-2xl border border-slate-200/60">
             {navLinks.map((link) => {
               const isActive = currentPage === link.id;
               return (
                 <button
                   key={link.id}
                   onClick={() => handleNavClick(link.id)}
-                  className={`text-base font-semibold transition-colors duration-200 cursor-pointer py-1 relative ${
-                    isActive
-                      ? "text-pragmatto-blue"
-                      : "text-pragmatto-navy hover:text-pragmatto-blue"
+                  className={`px-4 py-2 rounded-xl text-sm font-bold transition-all duration-200 cursor-pointer ${
+                    isActive 
+                      ? 'bg-white text-pragmatto-blue shadow-sm border border-slate-200/60' 
+                      : 'text-pragmatto-navy hover:text-pragmatto-blue hover:bg-white/60'
                   }`}
                 >
                   {link.label}
-                  {isActive && (
-                    <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-pragmatto-blue rounded-full" />
-                  )}
                 </button>
               );
             })}
           </nav>
 
+          {/* CTA Button */}
           <div className="hidden md:flex items-center space-x-4 shrink-0">
             <Button
               variant="primary"
               size="md"
-              onClick={() => handleNavClick("contact")}
-              className="shadow-sm font-semibold"
+              onClick={() => handleNavClick('contact')}
+              className="shadow-glow-blue font-bold rounded-xl"
             >
               Contact Us
             </Button>
           </div>
 
+          {/* Mobile Hamburger Button */}
           <div className="flex md:hidden items-center">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2.5 rounded-xl text-pragmatto-navy hover:bg-slate-100 focus:outline-none border border-slate-200/80"
+              className="p-3 rounded-2xl text-pragmatto-navy hover:bg-slate-100 focus:outline-none border border-slate-200"
               aria-label="Toggle Navigation Menu"
             >
-              {mobileMenuOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
         </div>
@@ -106,27 +103,28 @@ export function Navbar({ currentPage, onNavigate }) {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white border-b border-slate-200 px-5 pt-4 pb-6 space-y-4 shadow-xl">
-          <nav className="flex flex-col space-y-3">
+        <div className="md:hidden bg-white border-b border-slate-200 px-5 pt-4 pb-6 space-y-4 shadow-2xl">
+          <nav className="flex flex-col space-y-2">
             {navLinks.map((link) => (
               <button
                 key={link.id}
                 onClick={() => handleNavClick(link.id)}
-                className={`text-left px-4 py-3 rounded-xl text-base font-semibold transition-colors ${
-                  currentPage === link.id
-                    ? "bg-blue-50 text-pragmatto-blue"
-                    : "text-pragmatto-navy hover:bg-slate-50"
+                className={`flex items-center justify-between px-4 py-3.5 rounded-2xl text-base font-bold transition-colors ${
+                  currentPage === link.id 
+                    ? 'bg-blue-50 text-pragmatto-blue' 
+                    : 'text-pragmatto-navy hover:bg-slate-50'
                 }`}
               >
-                {link.label}
+                <span>{link.label}</span>
+                <ChevronRight className="w-4 h-4 text-slate-400" />
               </button>
             ))}
-            <div className="pt-2">
+            <div className="pt-3">
               <Button
                 variant="primary"
                 size="md"
-                className="w-full font-semibold"
-                onClick={() => handleNavClick("contact")}
+                className="w-full font-bold shadow-glow-blue"
+                onClick={() => handleNavClick('contact')}
               >
                 Contact Us
               </Button>

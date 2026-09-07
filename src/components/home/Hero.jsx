@@ -2,7 +2,7 @@ import React from 'react';
 import { siteContent } from '../../data/siteContent';
 import { Button } from '../ui/Button';
 import { Badge } from '../ui/Badge';
-import { ShieldCheck, Users, ArrowRight, CheckCircle2, Building2, Cpu, Globe2, Sparkles, UserCheck, Layers } from 'lucide-react';
+import { ShieldCheck, Users, ArrowRight, CheckCircle2, Building2, UserCheck, Sparkles } from 'lucide-react';
 
 export function Hero({ onNavigate }) {
   const { company } = siteContent;
@@ -15,10 +15,10 @@ export function Hero({ onNavigate }) {
   ];
 
   return (
-    <section className="relative pt-10 pb-16 sm:pt-14 sm:pb-24 lg:pt-16 lg:pb-28 overflow-hidden bg-gradient-to-b from-slate-50/80 via-white to-pragmatto-bgLight border-b border-slate-100">
+    <section className="relative pt-10 pb-16 sm:pt-16 sm:pb-24 lg:pt-20 lg:pb-32 overflow-hidden pragmatto-light-mesh border-b border-slate-200/60">
       
-      {/* Subtle Geometric Background Accent (Logo Inspired) */}
-      <div className="absolute top-0 right-0 -translate-y-12 translate-x-12 w-96 h-96 pointer-events-none opacity-15">
+      {/* Background Geometric Accent Inspired by Logo Triangles */}
+      <div className="absolute top-0 right-0 -translate-y-16 translate-x-16 w-[500px] h-[500px] pointer-events-none opacity-15">
         <svg viewBox="0 0 100 100" className="w-full h-full fill-current text-pragmatto-cyan">
           <polygon points="100,0 100,100 0,0" />
         </svg>
@@ -30,12 +30,12 @@ export function Hero({ onNavigate }) {
           {/* Left Column: Headline, Description, Trust Grid & CTAs */}
           <div className="lg:col-span-7 space-y-6 text-left">
             
-            <Badge variant="cyan">
+            <Badge variant="cyan" className="shadow-xs">
               {company.badge}
             </Badge>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-pragmatto-navy tracking-tight leading-[1.12]">
-              {company.tagline}
+              Building Cost-Effective Internal <span className="text-gradient">Tech Teams</span> for US SMBs
             </h1>
 
             <p className="text-lg sm:text-xl text-slate-600 leading-relaxed max-w-2xl font-normal">
@@ -47,9 +47,9 @@ export function Hero({ onNavigate }) {
               {trustPoints.map((point, idx) => (
                 <div 
                   key={idx}
-                  className="flex items-center gap-3 p-3.5 rounded-xl bg-white border border-slate-200/80 shadow-sm hover:border-pragmatto-blue/40 transition-colors"
+                  className="flex items-center gap-3 p-3.5 rounded-2xl bg-white border border-slate-200/80 shadow-sm hover:border-pragmatto-blue/40 transition-all duration-200"
                 >
-                  <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${
+                  <div className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 ${
                     point.highlight ? 'bg-blue-50 text-pragmatto-blue' : 'bg-cyan-50 text-pragmatto-cyan'
                   }`}>
                     <CheckCircle2 className="w-5 h-5" />
@@ -68,7 +68,7 @@ export function Hero({ onNavigate }) {
                 size="lg"
                 icon={ArrowRight}
                 onClick={() => onNavigate && onNavigate('contact')}
-                className="shadow-glow-blue font-bold"
+                className="shadow-glow-blue font-bold rounded-xl"
               >
                 Contact Us
               </Button>
@@ -76,7 +76,7 @@ export function Hero({ onNavigate }) {
                 variant="secondary"
                 size="lg"
                 onClick={() => onNavigate && onNavigate('about')}
-                className="font-semibold"
+                className="font-bold rounded-xl"
               >
                 Our Mission
               </Button>
@@ -84,15 +84,15 @@ export function Hero({ onNavigate }) {
 
           </div>
 
-          {/* Right Column: Completely Unified & Cohesive System Graphic */}
+          {/* Right Column: Unified Ecosystem Visual Architecture */}
           <div className="lg:col-span-5 relative">
             <div className="relative mx-auto max-w-md lg:max-w-none">
               
               {/* Single Main Cohesive Visual Card Container */}
-              <div className="bg-pragmatto-navy text-white rounded-3xl p-6 sm:p-8 shadow-2xl border border-slate-700/80 relative overflow-hidden">
+              <div className="bg-pragmatto-navy text-white rounded-3xl p-6 sm:p-8 shadow-2xl border border-slate-700/80 relative overflow-hidden pragmatto-geo-pattern">
                 
                 {/* Geometric Fold Accent */}
-                <div className="absolute top-0 right-0 w-32 h-32 opacity-15 pointer-events-none">
+                <div className="absolute top-0 right-0 w-36 h-36 opacity-15 pointer-events-none">
                   <svg viewBox="0 0 100 100" className="w-full h-full fill-current text-pragmatto-cyan">
                     <polygon points="100,0 100,100 0,0" />
                   </svg>
@@ -161,7 +161,7 @@ export function Hero({ onNavigate }) {
 
                   </div>
 
-                  {/* Fully Integrated Bottom Benefits Grid (No Disconnected Floating Cards) */}
+                  {/* Fully Integrated Bottom Benefits Grid */}
                   <div className="pt-2">
                     <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2.5 px-1">
                       Reliable Long-Term Team Benefits

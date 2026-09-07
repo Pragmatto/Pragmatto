@@ -8,25 +8,29 @@ export default {
     extend: {
       colors: {
         pragmatto: {
-          navy: '#0C1E38',       // Deep Navy Blue (Headers, Footer, Primary typography, Dark sections)
-          'navy-dark': '#071324',  // Extra Deep Navy for background contrast
-          'navy-light': '#162C4E', // Elevated Navy for dark cards
-          blue: '#165BB5',       // Professional Medium Blue (Primary buttons, active links, highlights)
-          'blue-hover': '#114A98',// Darker blue hover state
-          cyan: '#00A8E8',       // Sky Blue / Cyan Accent (Highlights, badges, subtle geometric glow)
-          'cyan-light': '#E0F2FE',// Very soft cyan background fill
-          slate: '#475569',      // Muted body typography text
-          bgLight: '#F8FAFC',    // 70% light background
+          navy: '#071328',        // Rich Midnight Navy (Headers, Footer, Primary Dark)
+          'navy-dark': '#040C1A',   // Ultra Deep Midnight Navy
+          'navy-card': '#0E1E38',   // Elevated Navy for Dark Cards
+          'navy-border': '#1E3A5F', // Border color for dark elements
+          blue: '#2563EB',        // Electric Royal Blue (Primary actions)
+          'blue-hover': '#1D4ED8', // Darker blue hover
+          'blue-light': '#EFF6FF', // Soft Blue Background fill
+          cyan: '#0EA5E9',        // Radiant Sky Cyan Accent
+          'cyan-hover': '#0284C7',
+          'cyan-light': '#F0F9FF', // Soft Cyan tint
+          slate: '#475569',       // Body typography
+          bgLight: '#F8FAFC',     // Light background canvas
         }
       },
       fontFamily: {
         sans: ['Inter', 'Plus Jakarta Sans', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
-        'glow': '0 0 25px -5px rgba(0, 168, 232, 0.25)',
-        'glow-blue': '0 0 25px -5px rgba(22, 91, 181, 0.3)',
-        'card': '0 4px 20px -2px rgba(12, 30, 56, 0.06), 0 2px 6px -1px rgba(12, 30, 56, 0.04)',
-        'card-hover': '0 12px 30px -4px rgba(12, 30, 56, 0.12), 0 4px 10px -2px rgba(12, 30, 56, 0.06)',
+        'glow': '0 0 30px -5px rgba(14, 165, 233, 0.3)',
+        'glow-blue': '0 0 30px -5px rgba(37, 99, 235, 0.35)',
+        'card': '0 4px 20px -2px rgba(7, 19, 40, 0.05), 0 2px 6px -1px rgba(7, 19, 40, 0.03)',
+        'card-hover': '0 20px 40px -10px rgba(7, 19, 40, 0.12), 0 8px 16px -4px rgba(7, 19, 40, 0.06)',
+        'glass': '0 8px 32px 0 rgba(7, 19, 40, 0.08)',
       }
     },
   },
