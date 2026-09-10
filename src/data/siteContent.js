@@ -3,10 +3,11 @@ export const PRAGMATTO_LOGO_URL = "/logo.png";
 export const siteContent = {
   company: {
     name: "Pragmatto Solutions",
-    tagline: "Building Cost-Effective Internal Tech Teams for US SMBs",
+    tagline:
+      "Get Important Tech Work Done - Without the Overhead of a Large Consulting Engagement",
     subtagline:
-      "We help small and mid-sized businesses hire and retain remote engineers for long-term internal projects — without long hiring cycles, high costs, or vendor dependency.",
-    badge: "US Accountability + Skilled Remote Talent",
+      "Many small and mid-sized businesses have important technical work that needs to get done - from reducing manual work and improving reports to organizing data, building internal tools, and maintaining existing software.",
+    badge: "US Accountability - Skilled Remote Talent",
     contactEmail: "info@pragmatto.com",
     careersEmail: "careers@pragmatto.com",
     linkedinUrl: "https://www.linkedin.com/company/pragmatto-solutions/",
