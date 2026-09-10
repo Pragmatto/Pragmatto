@@ -1,18 +1,18 @@
-import React from 'react';
-import { siteContent } from '../../data/siteContent';
-import * as Icons from 'lucide-react';
+import React from "react";
+import { siteContent } from "../../data/siteContent";
+import * as Icons from "lucide-react";
 
 export function TrustBar() {
   const { trustPillars } = siteContent;
 
   return (
-    <section className="bg-white py-10 border-b border-slate-100 relative z-20">
+    <section className="bg-white py-10 border-b border-slate-100 relative z-20 ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {trustPillars.map((pillar, idx) => {
             const IconComponent = Icons[pillar.icon] || Icons.CheckCircle;
             return (
-              <div 
+              <div
                 key={idx}
                 className="flex items-start gap-4 p-4 rounded-xl bg-slate-50/70 border border-slate-100 hover:border-pragmatto-blue/30 transition-colors"
               >

@@ -3,11 +3,10 @@ export const PRAGMATTO_LOGO_URL = "/logo.png";
 export const siteContent = {
   company: {
     name: "Pragmatto Solutions",
-    tagline:
-      "Get Important Tech Work Done - Without the Overhead of a Large Consulting Engagement",
+    tagline: "Technology Support for Manufacturing",
     subtagline:
-      "Many small and mid-sized businesses have important technical work that needs to get done - from reducing manual work and improving reports to organizing data, building internal tools, and maintaining existing software.",
-    badge: "US Accountability - Skilled Remote Talent",
+      "We help manufacturers reduce manual work, clean up business data, improve existing software, and build practical tools - without turning every problem into a large IT project.",
+    badge: "Manufacturing Technology Support",
     contactEmail: "info@pragmatto.com",
     careersEmail: "careers@pragmatto.com",
     linkedinUrl: "https://www.linkedin.com/company/pragmatto-solutions/",
@@ -15,211 +14,301 @@ export const siteContent = {
   },
 
   announcement: {
-    text: "Looking for freelancer work? Join our talent pool for future consideration.",
-    ctaText: "Click on Careers",
+    text: "Looking for software engineering opportunities?",
+    ctaText: "Explore Careers at Pragmatto",
     ctaLink: "/careers",
   },
 
-  trustPillars: [
-    {
-      title: "100% Full-Time Employees",
-      description:
-        "No freelancers, sub-contractors, or gig workers. Stable, committed engineering talent.",
-      icon: "UserCheck",
-    },
-    {
-      title: "Dedicated U.S. Account Manager",
-      description:
-        "US-based accountability, clear communication, and ongoing strategic oversight.",
-      icon: "ShieldCheck",
-    },
-    {
-      title: "Pre-Screened & Job-Ready",
-      description:
-        "Handpicked engineers trained in industry-standard technical and soft skills.",
-      icon: "Award",
-    },
-    {
-      title: "Cost-Effective Scaling",
-      description:
-        "Top-tier talent at a fraction of traditional consulting costs.",
-      icon: "TrendingUp",
-    },
-  ],
+  // Home Hero Section Data
+  hero: {
+    badge: "Manufacturing Technology Support",
+    headline: "Technology Problems Slowing Down Your Manufacturing Business?",
+    subheadline:
+      "Technology work shouldn't require large consulting projects, multiple layers, or unnecessary overhead. Pragmatto builds the right-sized team around the work, helping manufacturers get more done with less complexity and better value.",
 
-  valueProposition: {
-    title: "Remote Engineering Talent, Real Results, US-based accountability.",
-    paragraphs: [
-      "We hire and upskill top engineering talent from overlooked regions — empowering them to support your business with ERP, Salesforce, testing, support or dev tasks at a fraction of the cost.",
-      "At Pragmatto, we help SMBs transform with handpicked remote IT talent — backed by a dedicated U.S. account manager who’s available when you need us.",
-      "You know your business best — we work with you to build the talent that fits.",
-    ],
-    highlight: "Smart teams. Low cost. High reliability.",
+    primaryCta: "Talk About a Problem",
+    secondaryCta: "See What We Solve",
   },
 
-  employeeCommitment: {
-    title: "Full-Time Pragmatto Employees. No Freelancers.",
-    description:
-      "Every resource we assign is a full-time employee of Pragmatto—not a freelancer, not a sub contractor or a part-timer. This ensures commitment, consistency, and ongoing upskilling. You get a stable, integrated extension of your own team.",
+  // Home Problem Section Data
+  problemSection: {
+    badge: "Practical Problem Solving",
+    title: "Not Every Technology Problem Needs a Big IT Project",
     points: [
-      "Zero turnover risk associated with gig freelancers",
-      "Continuous technical & soft skills upskilling",
-      "Full alignment with your internal business goals",
-      "Long-term stability and institutional knowledge retention",
+      "A process takes too much manual work.",
+      "Business data is difficult to manage.",
+      "An existing system needs improvement.",
+      "Your team needs a small internal tool.",
     ],
+    closing:
+      "These problems are important - but they don't always need a large consulting engagement. We help manufacturers solve them practically, starting with the work that actually needs to be done.",
   },
 
+  // Home & Services Page Offerings
   services: [
     {
-      id: "erp",
-      title: "ERP Implementation & Support",
-      category: "Enterprise Systems",
+      id: "manual-work-reduction",
+      title: "Reduce Manual Work",
+      category: "Automation & Process Simplification",
+      subheading: "Reduce repetitive work. Give your team time back.",
       description:
-        "Streamlined ERP solutions designed to enhance efficiency and drive growth for your business operations. Tailored setup, integration, and continuous maintenance.",
+        "We identify repetitive computer-based work and automate or simplify it.",
+      fullDescription:
+        "If your team spends hours copying information, updating spreadsheets, moving data between systems, or performing repetitive computer-based tasks, there may be a simpler way. We identify repetitive processes and automate or simplify them where practical.",
+      icon: "Zap",
+      features: [
+        "Repetitive data entry",
+        "Spreadsheet-based processes",
+        "Routine reporting",
+        "Data movement between systems",
+        "Repetitive administrative tasks",
+        "Workflow automation",
+      ],
+    },
+    {
+      id: "data-cleanup-reporting",
+      title: "Clean Up Business Data",
+      category: "Data Cleanup & Reporting",
+      subheading: "Turn scattered business data into useful information.",
+      description:
+        "We organize messy business data and turn it into useful reports and information.",
+      fullDescription:
+        "Business information can become difficult to manage when it is spread across spreadsheets, ERP systems, applications, and other sources. We help organize, clean, and structure that information so your team can work with it more effectively.",
       icon: "Database",
       features: [
-        "Custom ERP Configuration",
-        "Data Migration & Cleaning",
-        "Workflow Automation",
-        "Ongoing Technical Support",
+        "Data cleanup and organization",
+        "Spreadsheet consolidation",
+        "ERP data preparation and cleanup",
+        "Business and operational reports",
+        "Recurring report preparation",
+        "Data extraction and organization",
       ],
     },
     {
-      id: "crm",
-      title: "CRM & Salesforce Solutions",
-      category: "Customer Experience",
+      id: "existing-software-support",
+      title: "Improve Existing Software",
+      category: "System Support & Enhancements",
+      subheading: "Improve the systems your business already depends on.",
       description:
-        "Customized CRM systems that improve customer relationships, streamline sales pipelines, and boost revenue for small and medium businesses.",
-      icon: "Users",
-      features: [
-        "Salesforce Administration",
-        "Pipeline Optimization",
-        "Integration & APIs",
-        "Custom Reporting Dashboards",
-      ],
-    },
-    {
-      id: "data",
-      title: "Data-Driven Insights & Analytics",
-      category: "Business Intelligence",
-      description:
-        "We provide actionable data insights to help businesses make informed decisions and drive growth effectively, focusing on practical solutions yielding measurable outcomes.",
-      icon: "BarChart3",
-      features: [
-        "Executive Dashboards",
-        "BI Tool Integration",
-        "Data Pipeline Engineering",
-        "Actionable Performance Metrics",
-      ],
-    },
-    {
-      id: "qa-dev",
-      title: "Software QA & Engineering Staffing",
-      category: "Remote Engineering",
-      description:
-        "Handpicked full-time software developers and QA automation engineers integrated directly into your dev team for continuous execution.",
+        "We maintain, support, and improve the software and websites your business already uses.",
+      fullDescription:
+        "Replacing existing software isn't always the answer. We help maintain, improve, integrate, and support the applications and systems your business already uses. This can include business applications, websites, ERP systems, Salesforce, and other existing software.",
       icon: "Code2",
       features: [
-        "Manual & Automated Testing",
-        "Full-Stack Development",
-        "Dedicated Support Engineers",
-        "US Culture-Ready Talent",
+        "ERP support and improvements",
+        "Salesforce enhancements and support",
+        "Application maintenance",
+        "Website updates",
+        "Feature improvements",
+        "Bug fixes & System integrations",
+      ],
+    },
+    {
+      id: "internal-business-tools",
+      title: "Build Small Internal Tools",
+      category: "Custom Utilities & Dashboards",
+      subheading:
+        "Build the small tools your existing software doesn't provide.",
+      description:
+        "When existing software doesn't solve a specific problem, we build a focused tool around your workflow.",
+      fullDescription:
+        "You don't always need another large software platform. Sometimes your team needs a focused tool built around one specific workflow or business requirement. We build practical internal tools that fit the way your business works.",
+      icon: "Wrench",
+      features: [
+        "Internal dashboards",
+        "Workflow tools",
+        "Data-entry tools",
+        "Tracking systems",
+        "Reporting tools",
+        "Custom business utilities",
       ],
     },
   ],
 
-  whyChooseUs: [
-    {
-      title: "Cost-Effective Quality",
-      description:
-        "We choose exceptional talent hidden in 2-tier and 3-tier tech hubs of India, delivering top engineering quality at accessible cost.",
-      icon: "DollarSign",
-    },
-    {
-      title: "Pre-Screened & Job-Ready",
-      description:
-        "Engineers are rigorously tested, trained, and pre-screened on production scenarios before joining your project.",
-      icon: "CheckCircle2",
-    },
-    {
-      title: "Industry-Standard Training",
-      description:
-        "We train top engineers with modern technical skills and essential soft skills for seamless daily collaboration.",
-      icon: "GraduationCap",
-    },
-    {
-      title: "U.S. Work Culture Aligned",
-      description:
-        "Remote-ready talent fully aligned to U.S. business hours, communication styles, and agile workflows.",
-      icon: "Globe",
-    },
-  ],
+  // Home Differentiator Section Data
+  differentiator: {
+    badge: "Our Approach",
+    title: "We Start With the Work - Not the Project Size",
+    intro:
+      "Traditional consulting can turn a small technology problem into a large project with multiple layers, meetings, and overhead. Our approach is different.",
+    steps: [
+      {
+        step: "01",
+        title: "Understand the Problem",
+        description: "Understand the business problem.",
+      },
+      {
+        step: "02",
+        title: "Define the Work",
+        description: "Define the work that needs to be done.",
+      },
+      {
+        step: "03",
+        title: "Build the Smallest Team Needed",
+        description: "Build the smallest team capable of delivering it well.",
+      },
+      {
+        step: "04",
+        title: "Deliver the Result",
+        description: "Stay focused and accountable for the work.",
+      },
+      {
+        step: "05",
+        title: "Scale When Needed",
+        description: "Scale the team only when the workload requires it.",
+      },
+    ],
+    closing:
+      "You pay for the work that needs to get done - not unnecessary layers around it.",
+  },
 
-  howItWorks: [
-    {
-      step: "01",
-      title: "Understand Your Needs",
-      description:
-        "We consult with your team to understand your specific tech stack, project goals, and required engineering roles.",
-    },
-    {
-      step: "02",
-      title: "Identify & Prepare Talent",
-      description:
-        "We select top pre-screened engineers and align them with your exact technical & workflow specifications.",
-    },
-    {
-      step: "03",
-      title: "Seamless Team Integration",
-      description:
-        "Your full-time Pragmatto engineer joins your daily standups, tools, and workflows backed by a U.S. Account Manager.",
-    },
-    {
-      step: "04",
-      title: "Scale When Needed",
-      description:
-        "Expand your remote capacity smoothly from part-time specialists to full dedicated engineering pods as you grow.",
-    },
-  ],
-
-  startSmallScaleFast: {
-    title: "Start Small. Scale Fast.",
-    description:
-      "Whether you need a part-time tester or a full-time Salesforce admin, we can help you build a cost-effective, high-performing remote team.",
-    examples: [
+  // Home Why Pragmatto Section Data
+  whyPragmatto: {
+    badge: "The Pragmatto Advantage",
+    title: "More Work. Less Overhead.",
+    intro:
+      "Pragmatto combines U.S.-based accountability with carefully selected engineering talent from India. This gives manufacturers access to capable technology delivery without the cost and complexity of a traditional consulting structure.",
+    points: [
       {
-        role: "Software QA Tester",
-        model: "Part-time or Full-time",
-        fit: "Ideal for sprint testing & bug validation",
+        title: "Right-Sized Teams",
+        description: "Only the people needed for the work.",
+        icon: "Users",
       },
       {
-        role: "Salesforce Administrator",
-        model: "Full-time dedicated",
-        fit: "Ideal for ongoing CRM optimization & user support",
+        title: "Focused Delivery",
+        description: "We stay focused on the problem to be solved.",
+        icon: "Target",
       },
       {
-        role: "Full-Stack Engineer",
-        model: "Full-time team extension",
-        fit: "Ideal for feature buildout & core dev backlogs",
+        title: "Clear Accountability",
+        description: "You know who is responsible for the work.",
+        icon: "ShieldCheck",
       },
       {
-        role: "ERP & Data Specialist",
-        model: "Project-based or Full-time",
-        fit: "Ideal for system migrations & BI reporting",
+        title: "Better Economics",
+        description:
+          "Less overhead means more of your technology budget goes toward actual delivery.",
+        icon: "DollarSign",
       },
     ],
   },
 
-  aboutMission: {
-    title: "Our Mission & Philosophy",
-    quote:
-      "We believe the right people, guided the right way, can quietly transform a business.",
-    paragraphs: [
-      "Pragmatto delivers custom-built remote IT talent with one clear difference — US-based responsibility and communication at every step.",
-      "Every client is supported by a dedicated U.S. account manager, always accessible, ensuring your needs are heard and handled — whether it’s strategy, urgency, or just a quick question.",
-      "We don’t believe in one-size-fits-all. We believe you know your business better than anyone, and together, we help build the skill and support system that truly works for you.",
-      "Efficient, thoughtful, and affordable — we exist to help growing businesses get things done right, without the overhead.",
-    ],
+  // Home Final CTA Data
+  homeFinalCta: {
+    title: "Have a Technology Problem You've Been Putting Off?",
+    content:
+      "Tell us what is slowing your team down. We'll help you determine whether technology can solve it - and what the simplest approach could be.",
+    buttonText: "Talk to Pragmatto",
+  },
+
+  // Services Page Header & Final Section Data
+  servicesPageHeader: {
+    title: "Technology Services for Manufacturing",
+    subheading: "Practical technology solutions for the work that matters.",
+    intro:
+      "Manufacturing businesses often have technology problems that are too important to ignore - but too small to justify a large IT project. We help solve those problems with focused, practical technology work.",
+  },
+
+  servicesFinalSection: {
+    title: "Have a Problem That Doesn't Fit These Categories?",
+    content:
+      "That's okay. If it involves repetitive work, business data, an existing system, or a process that could work better, talk to us about it.",
+    buttonText: "Discuss Your Problem",
+  },
+
+  // About Page Data
+  aboutPage: {
+    title: "About Pragmatto",
+    subheading:
+      "We believe technology work should be sized around the problem - not the consulting company.",
+    intro:
+      "Many businesses don't need a large technology project. They need a repetitive process fixed. They need their data cleaned up. They need an existing application improved. They need a small internal tool. Or they simply need someone reliable to take care of ongoing technology work.",
+
+    whyWeBuilt: {
+      title: "Why We Built Pragmatto",
+      content:
+        "Technology has become essential to every business. But getting technology work done can become unnecessarily expensive and complicated. A focused technology initiative can quickly become a large consulting engagement involving multiple layers of project management, analysts, architects, developers, QA, offshore teams, coordination, meetings, and overhead. We believe there is a better way.",
+    },
+
+    ourModel: {
+      title: "The Right Team Depends on the Work",
+      intro:
+        "We don't start by deciding how many people to put on a project. We start by understanding what actually needs to be accomplished.",
+      steps: [
+        {
+          num: "1",
+          label: "Understand",
+          desc: "Understand the business problem.",
+        },
+        { num: "2", label: "Define", desc: "Define the work required." },
+        {
+          num: "3",
+          label: "Build",
+          desc: "Build the smallest capable team.",
+        },
+        {
+          num: "4",
+          label: "Deliver",
+          desc: "Stay accountable for the outcome.",
+        },
+        {
+          num: "5",
+          label: "Scale",
+          desc: "Add capacity only when the workload requires it.",
+        },
+      ],
+      closing:
+        "Sometimes the right team is two people. Sometimes three. Sometimes five. The right team depends on the work - not the vendor's business model.",
+    },
+
+    ourDifference: {
+      title: "Not More People. More Useful Work.",
+      intro:
+        "Our goal isn't to provide the largest team. Our goal is to help businesses get more technology work done with fewer layers, less overhead, and clear accountability.",
+      pillars: [
+        {
+          title: "U.S.-Based Accountability",
+          desc: "A clear point of responsibility for your business.",
+          icon: "ShieldCheck",
+        },
+        {
+          title: "Engineering Delivery from India",
+          desc: "Access to carefully selected engineering talent.",
+          icon: "Globe",
+        },
+        {
+          title: "Right-Sized Teams",
+          desc: "Team size based on actual workload.",
+          icon: "Users",
+        },
+        {
+          title: "Focused Delivery",
+          desc: "Less coordination. More work getting done.",
+          icon: "CheckCircle2",
+        },
+      ],
+    },
+
+    manufacturingFocus: {
+      title: "Why We Work With Manufacturers",
+      content:
+        "Manufacturing businesses depend on technology every day - but not every technology problem deserves a major IT initiative. We focus on the practical problems that often get overlooked:",
+      problems: [
+        "Too much manual work.",
+        "Disorganized data.",
+        "Software that needs improvement.",
+        "Processes that should be simpler.",
+      ],
+      closing:
+        "These problems may seem small individually, but solving them can make everyday operations more efficient.",
+    },
+
+    finalCta: {
+      title: "Have a Problem Worth Solving?",
+      content:
+        "Tell us what is slowing your team down. We'll look at the problem first - then determine the right technology approach.",
+      buttonText: "Talk to Pragmatto",
+    },
   },
 
   careers: {
@@ -254,7 +343,7 @@ export const siteContent = {
     sections: [
       {
         heading: "Overview",
-        text: "At Pragmatto Solutions ('Pragmatto', 'we', 'our', or 'us'), we are committed to protecting the privacy and security of your business and personal information. This Privacy Policy outlines how we collect, use, store, and safeguard data when you visit our website (pragmatto.com) or communicate with our staffing and consulting team.",
+        text: "At Pragmatto Solutions ('Pragmatto', 'we', 'our', or 'us'), we are committed to protecting the privacy and security of your business and personal information. This Privacy Policy outlines how we collect, use, store, and safeguard data when you visit our website (pragmatto.com) or communicate with our engineering support team.",
       },
       {
         heading: "Information We Collect",
@@ -262,7 +351,7 @@ export const siteContent = {
       },
       {
         heading: "How We Use Your Information",
-        text: "Your information is used strictly to communicate with you regarding requested engineering staffing services, answer business inquiries, process job applications, and fulfill contractual obligations. We do not sell, rent, or trade your personal data to third parties.",
+        text: "Your information is used strictly to communicate with you regarding requested technology services, answer business inquiries, process job applications, and fulfill contractual obligations. We do not sell, rent, or trade your personal data to third parties.",
       },
       {
         heading: "Data Protection & Security",

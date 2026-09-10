@@ -103,7 +103,7 @@ app.post("/api/careers", upload.single("resume"), async (req, res) => {
     const emailHtml = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden;">
         <div style="background-color: #0C1E38; color: #ffffff; padding: 24px; text-align: center;">
-          <h2 style="margin: 0; font-size: 22px;">Pragmatto Solutions — Candidate Application</h2>
+          <h2 style="margin: 0; font-size: 22px;">Pragmatto Solutions - Candidate Application</h2>
           <p style="margin: 6px 0 0 0; color: #38bdf8; font-size: 14px;">Submitted via Pragmatto Careers Portal</p>
         </div>
         <div style="padding: 24px; background-color: #ffffff; color: #1e293b;">
@@ -245,7 +245,7 @@ app.post("/api/contact", upload.single("file"), async (req, res) => {
     const emailHtml = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden;">
         <div style="background-color: #0C1E38; color: #ffffff; padding: 24px; text-align: center;">
-          <h2 style="margin: 0; font-size: 22px;">Pragmatto Solutions — Client Inquiry</h2>
+          <h2 style="margin: 0; font-size: 22px;">Pragmatto Solutions - Client Inquiry</h2>
           <p style="margin: 6px 0 0 0; color: #38bdf8; font-size: 14px;">Submitted via Pragmatto Contact Form</p>
         </div>
         <div style="padding: 24px; background-color: #ffffff; color: #1e293b;">

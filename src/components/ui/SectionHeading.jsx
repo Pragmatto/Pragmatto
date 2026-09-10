@@ -22,7 +22,7 @@ export function SectionHeading({
         </div>
       )}
       {title && (
-        <h2 className={`text-3xl sm:text-4xl lg:text-[44px] font-extrabold tracking-tight leading-[1.2] ${dark ? 'text-white' : 'text-pragmatto-navy'}`}>
+        <h2 className={`text-3xl sm:text-4xl lg:text-[42px] font-extrabold tracking-tight leading-[1.2] ${dark ? 'text-white' : 'text-slate-900'}`}>
           {title}
         </h2>
       )}

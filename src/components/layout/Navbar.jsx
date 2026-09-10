@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { PRAGMATTO_LOGO_URL } from '../../data/siteContent';
-import { Button } from '../ui/Button';
-import { Menu, X, ChevronRight } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { PRAGMATTO_LOGO_URL } from "../../data/siteContent";
+import { Button } from "../ui/Button";
+import { Menu, X, ChevronRight } from "lucide-react";
 
 export function Navbar({ currentPage, onNavigate }) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -15,16 +15,15 @@ export function Navbar({ currentPage, onNavigate }) {
         setIsScrolled(false);
       }
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navLinks = [
-    { id: 'home', label: 'Home' },
-    { id: 'services', label: 'Services' },
-    { id: 'about', label: 'About' },
-    { id: 'careers', label: 'Careers' },
-    { id: 'privacy-policy', label: 'Privacy Policy' },
+    { id: "home", label: "Home" },
+    { id: "services", label: "Services" },
+    { id: "about", label: "About" },
+    { id: "careers", label: "Careers" },
   ];
 
   const handleNavClick = (id) => {
@@ -32,21 +31,22 @@ export function Navbar({ currentPage, onNavigate }) {
       onNavigate(id);
     }
     setMobileMenuOpen(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
-    <header className={`sticky top-0 z-40 transition-all duration-300 ${
-      isScrolled 
-        ? 'bg-white/95 backdrop-blur-md shadow-glass border-b border-slate-100 py-3.5 sm:py-4' 
-        : 'bg-white py-4 sm:py-6 border-b border-slate-100'
-    }`}>
+    <header
+      className={`sticky top-0 z-40 transition-all duration-300 ${
+        isScrolled
+          ? "bg-white/95 backdrop-blur-md shadow-glass border-b border-slate-100 py-3.5 sm:py-4"
+          : "bg-white py-4 sm:py-6 border-b border-slate-100"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between gap-8">
-          
           {/* Official Pragmatto Logo - Prominent sizing & aspect ratio */}
-          <div 
-            onClick={() => handleNavClick('home')}
+          <div
+            onClick={() => handleNavClick("home")}
             className="cursor-pointer flex items-center shrink-0 group py-1"
           >
             <img
@@ -65,9 +65,9 @@ export function Navbar({ currentPage, onNavigate }) {
                   key={link.id}
                   onClick={() => handleNavClick(link.id)}
                   className={`px-4 py-2 rounded-xl text-sm font-bold transition-all duration-200 cursor-pointer ${
-                    isActive 
-                      ? 'bg-white text-pragmatto-blue shadow-sm border border-slate-200/60' 
-                      : 'text-pragmatto-navy hover:text-pragmatto-blue hover:bg-white/60'
+                    isActive
+                      ? "bg-white text-pragmatto-blue shadow-sm border border-slate-200/60"
+                      : "text-pragmatto-navy hover:text-pragmatto-blue hover:bg-white/60"
                   }`}
                 >
                   {link.label}
@@ -81,7 +81,7 @@ export function Navbar({ currentPage, onNavigate }) {
             <Button
               variant="primary"
               size="md"
-              onClick={() => handleNavClick('contact')}
+              onClick={() => handleNavClick("contact")}
               className="shadow-glow-blue font-bold rounded-xl"
             >
               Contact Us
@@ -95,7 +95,11 @@ export function Navbar({ currentPage, onNavigate }) {
               className="p-3 rounded-2xl text-pragmatto-navy hover:bg-slate-100 focus:outline-none border border-slate-200"
               aria-label="Toggle Navigation Menu"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
             </button>
           </div>
         </div>
@@ -110,9 +114,9 @@ export function Navbar({ currentPage, onNavigate }) {
                 key={link.id}
                 onClick={() => handleNavClick(link.id)}
                 className={`flex items-center justify-between px-4 py-3.5 rounded-2xl text-base font-bold transition-colors ${
-                  currentPage === link.id 
-                    ? 'bg-blue-50 text-pragmatto-blue' 
-                    : 'text-pragmatto-navy hover:bg-slate-50'
+                  currentPage === link.id
+                    ? "bg-blue-50 text-pragmatto-blue"
+                    : "text-pragmatto-navy hover:bg-slate-50"
                 }`}
               >
                 <span>{link.label}</span>
@@ -124,7 +128,7 @@ export function Navbar({ currentPage, onNavigate }) {
                 variant="primary"
                 size="md"
                 className="w-full font-bold shadow-glow-blue"
-                onClick={() => handleNavClick('contact')}
+                onClick={() => handleNavClick("contact")}
               >
                 Contact Us
               </Button>
