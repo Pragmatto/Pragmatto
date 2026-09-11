@@ -6,7 +6,7 @@ export const siteContent = {
     tagline: "Technology Support for Manufacturing",
     subtagline:
       "We help manufacturers reduce manual work, clean up business data, improve existing software, and build practical tools - without turning every problem into a large IT project.",
-    badge: "Manufacturing Technology Support",
+    badge: "Technology Delivery Partner",
     contactEmail: "info@pragmatto.com",
     careersEmail: "careers@pragmatto.com",
     linkedinUrl: "https://www.linkedin.com/company/pragmatto-solutions/",
@@ -21,7 +21,7 @@ export const siteContent = {
 
   // Home Hero Section Data
   hero: {
-    badge: "Manufacturing Technology Support",
+    badge: "Technology Delivery Partner",
     headline: "Technology Problems Slowing Down Your Manufacturing Business?",
     subheadline:
       "Technology work shouldn't require large consulting projects, multiple layers, or unnecessary overhead. Pragmatto builds the right-sized team around the work, helping manufacturers get more done with less complexity and better value.",

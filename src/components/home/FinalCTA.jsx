@@ -12,7 +12,7 @@ export function FinalCTA({ onNavigate }) {
         <div className="max-w-3xl mx-auto space-y-6">
           <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-slate-800 text-sky-400 border border-slate-700">
             <ShieldCheck className="w-4 h-4 text-sky-400" />
-            Manufacturing Technology Support
+            Technology Delivery Partner
           </span>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">
