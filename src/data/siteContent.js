@@ -9,7 +9,9 @@ export const siteContent = {
     badge: "Technology Delivery Partner",
     contactEmail: "info@pragmatto.com",
     careersEmail: "careers@pragmatto.com",
-    linkedinUrl: "https://www.linkedin.com/company/pragmatto-solutions/",
+    linkedinUrl:
+      "https://www.linkedin.com/company/pragmatto/posts/?feedView=all",
+    facebookUrl: "https://www.facebook.com/profile.php?id=61591354486980",
     copyright: "© 2026 Pragmatto Solutions. All rights reserved.",
   },
 

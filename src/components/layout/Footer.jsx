@@ -1,6 +1,7 @@
 import React from "react";
 import { siteContent, PRAGMATTO_LOGO_URL } from "../../data/siteContent";
 import { Mail, Linkedin } from "lucide-react";
+import { FaFacebookF } from "react-icons/fa";
 
 export function Footer({ onNavigate }) {
   const { company } = siteContent;
@@ -31,16 +32,29 @@ export function Footer({ onNavigate }) {
               existing software, and build small internal tools - with
               right-sized teams and U.S. accountability.
             </p>
-            <div className="pt-2 flex items-center space-x-3">
-              <a
-                href={company.linkedinUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-xl bg-slate-800 hover:bg-pragmatto-blue text-slate-300 hover:text-white flex items-center justify-center transition-colors duration-200"
-                aria-label="LinkedIn Profile"
-              >
-                <Linkedin className="w-5 h-5" />
-              </a>
+            <div className="flex gap-3">
+              <div className="pt-2 flex items-center space-x-3">
+                <a
+                  href={company.linkedinUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-xl bg-slate-800 hover:bg-pragmatto-blue text-slate-300 hover:text-white flex items-center justify-center transition-colors duration-200"
+                  aria-label="LinkedIn Profile"
+                >
+                  <Linkedin className="w-5 h-5" />
+                </a>
+              </div>
+              <div className="pt-2 flex items-center space-x-3">
+                <a
+                  href={company.facebookUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-xl bg-slate-800 hover:bg-pragmatto-blue text-slate-300 hover:text-white flex items-center justify-center transition-colors duration-200"
+                  aria-label="Facebook Profile"
+                >
+                  <FaFacebookF className="w-5 h-5" />
+                </a>
+              </div>
             </div>
           </div>
 
