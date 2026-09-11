@@ -33,7 +33,7 @@ export function Hero({ onNavigate }) {
 
             <h1 className="text-4xl sm:text-5xl lg:text-[54px] font-extrabold text-slate-900 tracking-tight leading-[1.14]">
               <span className="text-gradient"> Get Tech Work </span>Done Without
-              the Consulting overhead
+              the Consulting Overhead
             </h1>
 
             <p className="text-lg sm:text-xl text-slate-600 leading-relaxed max-w-2xl font-normal">
