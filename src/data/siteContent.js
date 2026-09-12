@@ -60,11 +60,11 @@ export const siteContent = {
       icon: "Zap",
       features: [
         "Repetitive data entry",
-        "Spreadsheet-based processes",
+        "Automation of routine activities",
         "Routine reporting",
         "Data movement between systems",
         "Repetitive administrative tasks",
-        "Workflow automation",
+        "Bussiness flow Automation",
       ],
     },
     {
