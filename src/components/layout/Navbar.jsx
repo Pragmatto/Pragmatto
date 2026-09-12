@@ -22,7 +22,7 @@ export function Navbar({ currentPage, onNavigate }) {
   const navLinks = [
     { id: "home", label: "Home" },
     { id: "services", label: "Services" },
-    { id: "about", label: "About" },
+    { id: "about", label: "About Us" },
     { id: "careers", label: "Careers" },
   ];
 

@@ -222,7 +222,7 @@ export const siteContent = {
   aboutPage: {
     title: "About Pragmatto",
     subheading:
-      "We believe technology work should be sized around the problem - not the consulting company.",
+      "We believe technology work should be shaped around the problem - not by lengthy consulting",
     intro:
       "Many businesses don't need a large technology project. They need a repetitive process fixed. They need their data cleaned up. They need an existing application improved. They need a small internal tool. Or they simply need someone reliable to take care of ongoing technology work.",
 
@@ -274,7 +274,7 @@ export const siteContent = {
           icon: "ShieldCheck",
         },
         {
-          title: "Engineering Delivery from India",
+          title: "Engineering Delivery in offshore/onshore model",
           desc: "Access to carefully selected engineering talent.",
           icon: "Globe",
         },

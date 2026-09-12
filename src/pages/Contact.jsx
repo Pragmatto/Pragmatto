@@ -227,7 +227,7 @@ export function ContactPage() {
                 <p className="text-slate-300 text-sm leading-relaxed">
                   Every inquiry is handled directly by a U.S. Account Manager
                   within 24 hours. We work with you to understand your exact
-                  workflow before presenting talent.
+                  workflow before presentin problem solution.
                 </p>
                 <div className="pt-2 flex items-center gap-2 text-xs text-slate-400">
                   <ShieldCheck className="w-4 h-4 text-emerald-400" />
@@ -406,7 +406,7 @@ export function ContactPage() {
                   {/* Attach Files From Computer Control */}
                   <div>
                     <label className="block text-xs font-bold uppercase text-slate-700 mb-1.5">
-                      Attach Files From Computer (Optional)
+                      Attachments (Optional)
                     </label>
 
                     <input

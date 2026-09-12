@@ -96,14 +96,6 @@ export function Footer({ onNavigate }) {
                   Careers
                 </button>
               </li>
-              <li>
-                <button
-                  onClick={() => handleLinkClick("privacy-policy")}
-                  className="text-slate-300 hover:text-white transition-colors cursor-pointer"
-                >
-                  Privacy Policy
-                </button>
-              </li>
             </ul>
           </div>
 

@@ -161,7 +161,7 @@ export function Hero({ onNavigate }) {
                           <UserCheck className="w-4 h-4 text-blue-500" />
                         </div>
                         <div className="text-xs font-bold text-white">
-                          No Bloated Consulting
+                          No lengthy consulting
                         </div>
                         <div className="text-[11px] text-slate-400">
                           Work starts with what's needed.
