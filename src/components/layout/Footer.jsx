@@ -27,10 +27,10 @@ export function Footer({ onNavigate }) {
               />
             </div>
             <p className="text-slate-300 text-sm leading-relaxed max-w-md">
-              Pragmatto provides practical technology support for manufacturers.
-              We help reduce manual work, clean up business data, improve
-              existing software, and build small internal tools - with
-              right-sized teams and U.S. accountability.
+              Pragmatto provides practical technology support for small and
+              medium-sized businesses. We help reduce manual work, clean up
+              business data, improve existing software, and build small internal
+              tools - with right-sized teams and U.S. accountability.
             </p>
             <div className="flex gap-3">
               <div className="pt-2 flex items-center space-x-3">

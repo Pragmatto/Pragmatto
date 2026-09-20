@@ -26,7 +26,7 @@ export const siteContent = {
     badge: "Technology Delivery Partner",
     headline: "Technology Problems Slowing Down Your Manufacturing Business?",
     subheadline:
-      "Technology work shouldn't require large consulting projects, multiple layers, or unnecessary overhead. Pragmatto builds the right-sized team around the work, helping manufacturers get more done with less complexity and better value.",
+      "Technology work shouldn't require large consulting projects, multiple layers, or unnecessary overhead. Pragmatto builds the right-sized team around the work, helping small and medium-sized businesses get more done with less complexity and better value.",
 
     primaryCta: "Talk About a Problem",
     secondaryCta: "See What We Solve",
@@ -43,7 +43,7 @@ export const siteContent = {
       "Your team needs a small internal tool.",
     ],
     closing:
-      "These problems are important - but they don't always need a large consulting engagement. We help manufacturers solve them practically, starting with the work that actually needs to be done.",
+      "These problems are important - but they don't always need a large consulting engagement. We help SMBs solve them practically, starting with the work that actually needs to be done.",
   },
 
   // Home & Services Page Offerings
@@ -169,7 +169,7 @@ export const siteContent = {
     badge: "The Pragmatto Advantage",
     title: "More Work. Less Overhead.",
     intro:
-      "Pragmatto combines U.S.-based accountability with carefully selected engineering talent from India. This gives manufacturers access to capable technology delivery without the cost and complexity of a traditional consulting structure.",
+      "Pragmatto combines U.S.-based accountability with carefully selected engineering talent from India. This gives SMBs access to capable technology delivery without the cost and complexity of a traditional consulting structure.",
     points: [
       {
         title: "Right-Sized Teams",
@@ -205,10 +205,10 @@ export const siteContent = {
 
   // Services Page Header & Final Section Data
   servicesPageHeader: {
-    title: "Technology Services for Manufacturing",
+    title: "Technology Services for SMBs",
     subheading: "Practical technology solutions for the work that matters.",
     intro:
-      "Manufacturing businesses often have technology problems that are too important to ignore - but too small to justify a large IT project. We help solve those problems with focused, practical technology work.",
+      "Small and medium-sized businesses often have technology problems that are too important to ignore - but too small to justify a large IT project. We help solve those problems with focused, practical technology work.",
   },
 
   servicesFinalSection: {
@@ -292,9 +292,9 @@ export const siteContent = {
     },
 
     manufacturingFocus: {
-      title: "Why We Work With Manufacturers",
+      title: "Why We Work With Small & Medium-Sized Businesses",
       content:
-        "Manufacturing businesses depend on technology every day - but not every technology problem deserves a major IT initiative. We focus on the practical problems that often get overlooked:",
+        "SMBs businesses depend on technology every day - but not every technology problem deserves a major IT initiative. We focus on the practical problems that often get overlooked:",
       problems: [
         "Too much manual work.",
         "Disorganized data.",

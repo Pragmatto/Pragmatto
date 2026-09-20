@@ -12,8 +12,8 @@ export function ServicesSection({ onNavigate }) {
     <section className="py-20 lg:py-28 bg-slate-50 relative overflow-hidden border-b border-slate-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <SectionHeading
-          badge="Manufacturing Focus"
-          title="Practical Technology Support for Manufacturing"
+          badge="Businesses Focus"
+          title="Practical Technology Support for Small & Medium-Sized Businesses"
           subtitle="Focused, practical technology work for the problems that matter to your daily operations."
           align="center"
         />

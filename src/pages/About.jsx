@@ -127,7 +127,7 @@ export function AboutPage({ onNavigate }) {
       {/* 5. MANUFACTURING FOCUS: Why We Work With Manufacturers */}
       <section className="py-16 sm:py-24 bg-slate-50 ">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
-          <Badge variant="blue">Manufacturing Focus</Badge>
+          <Badge variant="blue">Businesses Focus</Badge>
 
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
             {aboutPage.manufacturingFocus.title}

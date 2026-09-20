@@ -14,7 +14,7 @@ export function ServicesPage({ onNavigate }) {
       <section className="bg-slate-900 text-white py-16 sm:py-24 relative overflow-hidden pragmatto-geo-pattern">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <Badge variant="dark" className="mb-4">
-            Manufacturing Technology Services
+            Business Technology Services
           </Badge>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
             {servicesPageHeader.title}
