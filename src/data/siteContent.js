@@ -86,6 +86,27 @@ export const siteContent = {
         "Data extraction and organization",
       ],
     },
+
+    {
+      id: "qa-testing",
+      title: "QA Testing",
+      category: "Quality Assurance & Software Testing",
+      subheading: "Find software issues before they affect your business.",
+      description:
+        "We test software and business applications to identify issues, verify functionality, and improve reliability.",
+      fullDescription:
+        "We test software and business applications to find issues before they affect your team or customers. Our QA process focuses on how the software works in real-world use, helping businesses improve reliability, reduce defects, and deliver a better experience. We can also test websites and web applications when needed, using practical QA tools and processes suited to the work.",
+      icon: "Bug",
+      features: [
+        "System testing",
+        "Functional testing",
+        "Integration testing",
+        "End-to-End testing",
+        "User acceptance testing",
+        "Regression testing",
+      ],
+    },
+
     {
       id: "existing-software-support",
       title: "Improve Existing Software",
