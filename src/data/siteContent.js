@@ -26,7 +26,7 @@ export const siteContent = {
     badge: "Technology Delivery Partner",
     headline: "Technology Problems Slowing Down Your Manufacturing Business?",
     subheadline:
-      "Technology work shouldn't require large consulting projects, multiple layers, or unnecessary overhead. Pragmatto builds the right-sized team around the work, helping small and medium-sized businesses get more done with less complexity and better value.",
+      "Technology work shouldn't require large consulting projects, multiple layers, or unnecessary overhead. Pragmatto builds the right-sized team around the work, helping small and medium-sized businesses get more work done with less complexity and better value.",
 
     primaryCta: "Talk About a Problem",
     secondaryCta: "See What We Solve",
