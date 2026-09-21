@@ -7,6 +7,8 @@ import { ArrowRight } from "lucide-react";
 
 export function ServicesSection({ onNavigate }) {
   const { services } = siteContent;
+  // Display only the first 4 services on the Home Page for a perfectly symmetrical 2x2 grid
+  const featuredServices = services.slice(0, 4);
 
   return (
     <section className="py-20 lg:py-28 bg-slate-50 relative overflow-hidden border-b border-slate-200/80">
@@ -18,8 +20,9 @@ export function ServicesSection({ onNavigate }) {
           align="center"
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
-          {services.map((service) => (
+        {/* Perfectly Symmetrical 2x2 Grid (4 Services) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 items-stretch mt-12">
+          {featuredServices.map((service) => (
             <ServiceCard
               key={service.id}
               title={service.title}
@@ -31,14 +34,15 @@ export function ServicesSection({ onNavigate }) {
           ))}
         </div>
 
-        <div className="mt-14 text-center ">
+        {/* CTA Button to navigate to the Services Page for all remaining services */}
+        <div className="mt-14 text-center">
           <Button
             variant="primary"
             size="md"
             icon={ArrowRight}
             onClick={() => onNavigate && onNavigate("services")}
           >
-            See Our Services
+            See All Services
           </Button>
         </div>
       </div>
