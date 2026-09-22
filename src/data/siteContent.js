@@ -36,14 +36,10 @@ export const siteContent = {
   problemSection: {
     badge: "Practical Problem Solving",
     title: "Not Every Technology Problem Needs a Big IT Project",
-    points: [
-      "A process takes too much manual work.",
-      "Business data is difficult to manage.",
-      "An existing system needs improvement.",
-      "Your team needs a small internal tool.",
-    ],
-    closing:
-      "These problems are important - but they don't always need a large consulting engagement. We help SMBs solve them practically, starting with the work that actually needs to be done.",
+    subheading:
+      "Get the technology work done without turning it into a bigger project.",
+    body: "You may need to automate a repetitive process, clean and validate business data, test an application, improve an existing system, or build a small internal tool. Pragmatto focuses on the work that actually needs to be done and brings the right technical capability to deliver it - without unnecessary project layers, complexity, or overhead.",
+    tagline: "Focused work. Practical technology. Delivered outcomes.",
   },
 
   // Home & Services Page Offerings
@@ -54,7 +50,7 @@ export const siteContent = {
       category: "Automation & Process Simplification",
       subheading: "Reduce repetitive work. Give your team time back.",
       description:
-        "We identify repetitive computer-based work and automate or simplify it.",
+        "We identify repetitive work and find practical ways to automate or simplify it, reducing manual effort and saving valuable time.",
       fullDescription:
         "If your team spends hours copying information, updating spreadsheets, moving data between systems, or performing repetitive computer-based tasks, there may be a simpler way. We identify repetitive processes and automate or simplify them where practical.",
       icon: "Zap",
@@ -70,20 +66,22 @@ export const siteContent = {
     {
       id: "data-cleanup-reporting",
       title: "Clean Up Business Data",
-      category: "Data Cleanup & Reporting",
-      subheading: "Turn scattered business data into useful information.",
+      category: "Data Quality, Validation & Cleanup",
+      subheading: "Keep your business data accurate and reliable.",
       description:
-        "We organize messy business data and turn it into useful reports and information.",
+        "We help businesses improve data accuracy, maintain data quality and keep information reliable across their systems.",
       fullDescription:
-        "Business information can become difficult to manage when it is spread across spreadsheets, ERP systems, applications, and other sources. We help organize, clean, and structure that information so your team can work with it more effectively.",
+        "Technology systems are only as reliable as the information flowing through them. Pragmatto provides focused data quality support for businesses dealing with inaccurate, inconsistent, incomplete, duplicated or poorly structured data. We help verify, validate, clean, organize and reconcile data across business and enterprise systems.",
       icon: "Database",
       features: [
-        "Data cleanup and organization",
-        "Spreadsheet consolidation",
+        "Data verification and validation",
+        "Data cleanup and quality checks",
+        "Data migration validation",
+        "Data mapping validation",
+        "Data reconciliation",
+        "Data discrepancy investigation",
+        "Data entry and maintenance",
         "ERP data preparation and cleanup",
-        "Business and operational reports",
-        "Recurring report preparation",
-        "Data extraction and organization",
       ],
     },
 
@@ -93,9 +91,9 @@ export const siteContent = {
       category: "Quality Assurance & Software Testing",
       subheading: "Find software issues before they affect your business.",
       description:
-        "We test software and business applications to identify issues, verify functionality, and improve reliability.",
+        "We test software and business applications to validate functionality, integrations, data and workflows before problems reach production.",
       fullDescription:
-        "We test software and business applications to find issues before they affect your team or customers. Our QA process focuses on how the software works in real-world use, helping businesses improve reliability, reduce defects, and deliver a better experience. We can also test websites and web applications when needed, using practical QA tools and processes suited to the work.",
+        "Software can be technically complete and still fail in real-world use. We test business applications and software workflows to identify functional issues, integration problems, data issues and defects before they affect your team or customers. Our testing focuses on practical business scenarios, helping improve reliability and reduce problems in production.",
       icon: "Bug",
       features: [
         "System testing",
@@ -104,6 +102,8 @@ export const siteContent = {
         "End-to-End testing",
         "User acceptance testing",
         "Regression testing",
+        "Go-live & production validation",
+        "Payment & POS testing",
       ],
     },
 
@@ -190,7 +190,7 @@ export const siteContent = {
     badge: "The Pragmatto Advantage",
     title: "More Work. Less Overhead.",
     intro:
-      "Pragmatto combines U.S.-based accountability with carefully selected engineering talent from India. This gives SMBs access to capable technology delivery without the cost and complexity of a traditional consulting structure.",
+      "Pragmatto combines US based accountability with carefully selected engineering talent from India. This gives SMBs access to capable technology delivery without the cost and complexity of a traditional consulting structure.",
     points: [
       {
         title: "Right-Sized Teams",

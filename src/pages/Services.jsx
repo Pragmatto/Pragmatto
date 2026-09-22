@@ -72,7 +72,7 @@ export function ServicesPage({ onNavigate }) {
                       <span className="inline-flex items-center px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full text-xs font-semibold bg-sky-50 text-blue-700 border border-sky-200/80">
                         {service.category}
                       </span>
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-slate-900 text-sky-400 flex items-center justify-center shrink-0 shadow-xs">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 shadow-xs">
                         {React.createElement(
                           Icons[service.icon] || Icons.Code2,
                           { className: "w-5 h-5 sm:w-6 sm:h-6" },
