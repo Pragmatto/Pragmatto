@@ -241,96 +241,116 @@ export const siteContent = {
 
   // About Page Data
   aboutPage: {
-    title: "About Pragmatto",
-    subheading:
-      "We believe technology work should be shaped around the problem - not by lengthy consulting",
-    intro:
-      "Many businesses don't need a large technology project. They need a repetitive process fixed. They need their data cleaned up. They need an existing application improved. They need a small internal tool. Or they simply need someone reliable to take care of ongoing technology work.",
-
+    hero: {
+      badge: "",
+      title: "About Pragmatto",
+      paragraph:
+        '"We believe technology work should be shaped around the problem - not by lengthy consulting"',
+      coreMessage:
+        "Many businesses don't need a large technology project. They need a repetitive process fixed. They need their data cleaned up. They need an existing application improved. They need a small internal tool. Or they simply need someone reliable to take care of ongoing technology work.",
+    },
     whyWeBuilt: {
+      badge: "Our Purpose",
       title: "Why We Built Pragmatto",
-      content:
-        "Technology has become essential to every business. But getting technology work done can become unnecessarily expensive and complicated. A focused technology initiative can quickly become a large consulting engagement involving multiple layers of project management, analysts, architects, developers, QA, offshore teams, coordination, meetings, and overhead. We believe there is a better way.",
+      p1: "Technology has become essential to every business. But getting technology work done can become unnecessarily expensive and complicated. A focused technology initiative can quickly become a large consulting engagement involving multiple layers of project management, analysts, architects, developers, QA, offshore teams, coordination, meetings, and overhead. We believe there is a better way.",
+      p2: "A business may need a process improved, data cleaned and validated, software tested, an existing system enhanced, or a small internal tool built.",
+      coreIdea:
+        "Pragmatto was created around a simple idea: understand the specific problem, focus on the work that needs to be done, and deliver a practical result.",
     },
-
-    ourModel: {
+    ourApproach: {
+      badge: "Our Approach",
       title: "The Right Team Depends on the Work",
-      intro:
+      subtitle:
         "We don't start by deciding how many people to put on a project. We start by understanding what actually needs to be accomplished.",
-      steps: [
+      cards: [
         {
-          num: "1",
-          label: "Understand",
-          desc: "Understand the business problem.",
-        },
-        { num: "2", label: "Define", desc: "Define the work required." },
-        {
-          num: "3",
-          label: "Build",
-          desc: "Build the smallest capable team.",
+          title: "Understand",
+          description: "Understand the business problem.",
+          icon: "Search",
         },
         {
-          num: "4",
-          label: "Deliver",
-          desc: "Stay accountable for the outcome.",
+          title: "Define",
+          description: "Define the work required.",
+          icon: "FileText",
         },
         {
-          num: "5",
-          label: "Scale",
-          desc: "Add capacity only when the workload requires it.",
-        },
-      ],
-      closing:
-        "Sometimes the right team is two people. Sometimes three. Sometimes five. The right team depends on the work - not the vendor's business model.",
-    },
-
-    ourDifference: {
-      title: "Not More People. More Useful Work.",
-      intro:
-        "Our goal isn't to provide the largest team. Our goal is to help businesses get more technology work done with fewer layers, less overhead, and clear accountability.",
-      pillars: [
-        {
-          title: "U.S.-Based Accountability",
-          desc: "A clear point of responsibility for your business.",
-          icon: "ShieldCheck",
+          title: "Build",
+          description: "Build the smallest capable team.",
+          icon: "Wrench",
         },
         {
-          title: "Engineering Delivery in offshore/onshore model",
-          desc: "Access to carefully selected engineering talent.",
-          icon: "Globe",
-        },
-        {
-          title: "Right-Sized Teams",
-          desc: "Team size based on actual workload.",
-          icon: "Users",
-        },
-        {
-          title: "Focused Delivery",
-          desc: "Less coordination. More work getting done.",
+          title: "Deliver",
+          description: "Stay accountable for the outcome.",
           icon: "CheckCircle2",
         },
+        {
+          title: "Scale",
+          description: "Add capacity only when the workload requires it.",
+          icon: "TrendingUp",
+        },
       ],
     },
-
-    manufacturingFocus: {
-      title: "Why We Work With Small & Medium-Sized Businesses",
-      content:
-        "SMBs businesses depend on technology every day - but not every technology problem deserves a major IT initiative. We focus on the practical problems that often get overlooked:",
-      problems: [
-        "Too much manual work.",
-        "Disorganized data.",
-        "Software that needs improvement.",
-        "Processes that should be simpler.",
-      ],
-      closing:
-        "These problems may seem small individually, but solving them can make everyday operations more efficient.",
+    founder: {
+      badge: "Founder & CEO",
+      name: "Kalyani K",
+      subheading: "Quality Assurance · Software Testing · Data Quality",
+      summary:
+        "Kalyani brings extensive experience across software quality, data validation, business applications and technology-enabled operations. Her experience spans healthcare, retail, payments, government-related environments and other data-intensive business systems.",
     },
-
-    finalCta: {
-      title: "Have a Problem Worth Solving?",
-      content:
-        "Tell us what is slowing your team down. We'll look at the problem first - then determine the right technology approach.",
-      buttonText: "Talk to Pragmatto",
+    experience: {
+      badge: "Experience Behind Our Perspective",
+      title: "Quality & Data Expertise",
+      pillars: [
+        {
+          title: "Software Testing",
+          items:
+            "Functional, integration, system, end-to-end, regression, UAT, and production validation.",
+        },
+        {
+          title: "Data Quality",
+          items:
+            "Data verification, validation, cleanup, migration validation, reconciliation, and data integrity.",
+        },
+      ],
+      enterpriseBadge: "Enterprise Credibility",
+      enterpriseTitle: "Enterprise Technology Experience",
+      enterpriseSubtitle:
+        "20+ years of professional experience across enterprise technology, business applications, retail systems, payments, ERP, integrations, and technology transformation.",
+      companies: [
+        { name: "IBM", logo: "/ibm.png" },
+        { name: "HP", logo: "/HP.png" },
+        { name: "Walmart", logo: "/Walmart.png" },
+        { name: "7-Eleven", logo: "/7-Eleven.png" },
+        { name: "Dickson Manufacturers", logo: "/Dickson Manufacturers.png" },
+      ],
+      majorAreas: [
+        "Enterprise Applications",
+        "Retail & POS",
+        "Payments",
+        "ERP",
+        "Salesforce",
+        "Integrations",
+        "Technology Transformation",
+      ],
+    },
+    clientImpact: {
+      badge: "What This Means for Our Clients",
+      flowSteps: [
+        { num: "01", title: "Understand the Problem" },
+        { num: "02", title: "Focus on the Work" },
+        { num: "03", title: "Solve It Practically" },
+        { num: "04", title: "Deliver the Outcome" },
+      ],
+      supportingStatement:
+        "Our experience helps us understand both the technology involved and the business environment in which the work needs to operate.",
+    },
+    philosophy: {
+      badge: "Our Philosophy",
+      title:
+        "Focus on the Problem - Not the Size of the Consulting Engagement.",
+      statement:
+        "The requirement may be large or small. The approach remains the same: understand the problem, focus on the work that matters, and deliver the outcome.",
+      prominentFinalStatement: "You Define the Task. We Deliver It.",
     },
   },
 
