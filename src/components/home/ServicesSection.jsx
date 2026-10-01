@@ -25,11 +25,13 @@ export function ServicesSection({ onNavigate }) {
           {featuredServices.map((service) => (
             <ServiceCard
               key={service.id}
+              id={service.id}
               title={service.title}
               category={service.category}
               description={service.description}
               iconName={service.icon}
               features={service.features}
+              onClick={() => onNavigate && onNavigate("service-detail", service.id)}
             />
           ))}
         </div>

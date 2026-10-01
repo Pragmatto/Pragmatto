@@ -29,17 +29,17 @@ export function ValueProposition({ onNavigate }) {
 
         {/* Tagline / Delivered Outcomes Highlight Banner */}
         <div className="pt-2">
-          <div className="p-6 sm:p-8 rounded-2xl bg-slate-900 text-white border border-slate-800 shadow-md max-w-3xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-6 text-center">
+          <div className="p-6 sm:p-8 rounded-2xl bg-slate-900 text-white border border-slate-800 shadow-md max-w-3xl mx-auto flex  sm:flex-row items-center justify-center gap-2 sm:gap-6 text-center">
             <span className="text-base sm:text-lg font-bold text-sky-400">
-              Focused work.
+              Focused work
             </span>
-            <span className="hidden sm:inline text-slate-600 font-bold">•</span>
+            <span className=" sm:inline text-slate-600 font-bold">•</span>
             <span className="text-base sm:text-lg font-bold text-white">
-              Practical technology.
+              Practical technology
             </span>
-            <span className="hidden sm:inline text-slate-600 font-bold">•</span>
+            <span className=" sm:inline text-slate-600 font-bold">•</span>
             <span className="text-base sm:text-lg font-bold text-emerald-400">
-              Delivered outcomes.
+              Delivered outcomes
             </span>
           </div>
         </div>

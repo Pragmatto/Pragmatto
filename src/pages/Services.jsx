@@ -63,7 +63,10 @@ export function ServicesPage({ onNavigate }) {
             {filteredServices.map((service) => (
               <div
                 key={service.id}
-                className="bg-white rounded-2xl p-5 sm:p-8 lg:p-10 border border-slate-200/90 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between"
+                onClick={() =>
+                  onNavigate && onNavigate("service-detail", service.id)
+                }
+                className="bg-white rounded-2xl p-5 sm:p-8 lg:p-10 border border-slate-200/90 shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col justify-between cursor-pointer group"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
                   {/* Left Column: Category, Icon, Title, Subheading & Description */}
@@ -72,7 +75,7 @@ export function ServicesPage({ onNavigate }) {
                       <span className="inline-flex items-center px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full text-xs font-semibold bg-sky-50 text-blue-700 border border-sky-200/80">
                         {service.category}
                       </span>
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 shadow-xs">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 shadow-xs transition-colors duration-300">
                         {React.createElement(
                           Icons[service.icon] || Icons.Code2,
                           { className: "w-5 h-5 sm:w-6 sm:h-6" },
@@ -80,7 +83,7 @@ export function ServicesPage({ onNavigate }) {
                       </div>
                     </div>
 
-                    <h2 className="text-xl sm:text-3xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                    <h2 className="text-xl sm:text-3xl font-extrabold text-slate-900 tracking-tight leading-tight transition-colors">
                       {service.title}
                     </h2>
 
@@ -113,19 +116,37 @@ export function ServicesPage({ onNavigate }) {
                     </div>
 
                     {/* Card Footer Row */}
-                    <div className="pt-5 sm:pt-6 mt-6 sm:mt-8 border-t border-slate-100 flex flex-row sm:items-center justify-between gap-3 sm:gap-4">
+                    <div className="pt-5 sm:pt-6 mt-6 sm:mt-8 border-t border-slate-100 flex flex-wrap sm:flex-nowrap items-center justify-between gap-3 sm:gap-4">
                       <div className="flex items-center gap-2 text-xs font-medium text-slate-500">
                         <span className="w-2 h-2 rounded-full bg-emerald-500 inline-block shrink-0" />
                         <span>Practical & Focused Delivery</span>
                       </div>
-                      <Button
-                        variant="primary"
-                        size="sm"
-                        onClick={() => onNavigate && onNavigate("contact")}
-                        className="w-auto"
-                      >
-                        Discuss This Service
-                      </Button>
+                      <div className="flex items-center gap-2.5 sm:gap-3 w-full sm:w-auto justify-end">
+                        <Button
+                          variant="cyan"
+                          size="sm"
+                          icon={Icons.ArrowRight}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            onNavigate &&
+                              onNavigate("service-detail", service.id);
+                          }}
+                          className="w-auto font-semibold"
+                        >
+                          Know More
+                        </Button>
+                        <Button
+                          variant="primary"
+                          size="sm"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            onNavigate && onNavigate("contact");
+                          }}
+                          className="w-auto font-semibold"
+                        >
+                          Discuss This Service
+                        </Button>
+                      </div>
                     </div>
                   </div>
                 </div>
