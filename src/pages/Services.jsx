@@ -3,6 +3,7 @@ import { siteContent } from "../data/siteContent";
 import { Button } from "../components/ui/Button";
 import { Badge } from "../components/ui/Badge";
 import { FinalCTA } from "../components/home/FinalCTA";
+import { slugify } from "../data/workDetails";
 import * as Icons from "lucide-react";
 
 export function ServicesPage({ onNavigate }) {
@@ -106,7 +107,12 @@ export function ServicesPage({ onNavigate }) {
                         {service.features.map((feat, fIdx) => (
                           <div
                             key={fIdx}
-                            className="flex items-center gap-2 sm:gap-2.5 p-2 sm:p-2.5 rounded-lg bg-slate-50 border border-slate-200/60 text-slate-700 text-xs sm:text-sm font-medium hover:bg-slate-100/70 transition-colors"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              onNavigate &&
+                                onNavigate("work-detail", service.id, slugify(feat));
+                            }}
+                            className="flex items-center gap-2 sm:gap-2.5 p-2 sm:p-2.5 rounded-lg bg-slate-50 border border-slate-200/60 text-slate-700 text-xs sm:text-sm font-medium hover:bg-blue-50 hover:border-blue-300 hover:text-blue-700 transition-colors cursor-pointer"
                           >
                             <Icons.CheckCircle2 className="w-4 h-4 text-sky-500 shrink-0" />
                             <span className="leading-snug">{feat}</span>

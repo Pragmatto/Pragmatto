@@ -6,6 +6,7 @@ import { Footer } from "./components/layout/Footer";
 import { HomePage } from "./pages/Home";
 import { ServicesPage } from "./pages/Services";
 import { ServiceDetailPage } from "./pages/ServiceDetail";
+import { WorkDetailPage } from "./pages/WorkDetail";
 import { AboutPage } from "./pages/About";
 import { CareersPage } from "./pages/Careers";
 import { ContactPage } from "./pages/Contact";
@@ -15,24 +16,31 @@ const getPageFromPath = () => {
   const path = window.location.pathname;
 
   if (path === "/services") {
-    return { page: "services", serviceId: null };
+    return { page: "services", serviceId: null, workId: null };
   }
   if (path.startsWith("/services/")) {
-    const serviceId = path.replace("/services/", "");
-    if (serviceId) {
-      return { page: "service-detail", serviceId };
+    const raw = path.replace("/services/", "");
+    const parts = raw.split("/").filter(Boolean);
+    if (parts.length === 1) {
+      return { page: "service-detail", serviceId: parts[0], workId: null };
     }
-    return { page: "services", serviceId: null };
+    if (parts.length >= 2) {
+      return { page: "work-detail", serviceId: parts[0], workId: parts[1] };
+    }
+    return { page: "services", serviceId: null, workId: null };
   }
-  if (path === "/about") return { page: "about", serviceId: null };
-  if (path === "/careers") return { page: "careers", serviceId: null };
-  if (path === "/contact") return { page: "contact", serviceId: null };
-  if (path === "/privacy-policy") return { page: "privacy-policy", serviceId: null };
+  if (path === "/about") return { page: "about", serviceId: null, workId: null };
+  if (path === "/careers") return { page: "careers", serviceId: null, workId: null };
+  if (path === "/contact") return { page: "contact", serviceId: null, workId: null };
+  if (path === "/privacy-policy") return { page: "privacy-policy", serviceId: null, workId: null };
 
-  return { page: "home", serviceId: null };
+  return { page: "home", serviceId: null, workId: null };
 };
 
-const getPathFromPage = (pageId, serviceId) => {
+const getPathFromPage = (pageId, serviceId, workId) => {
+  if (pageId === "work-detail" && serviceId && workId) {
+    return `/services/${serviceId}/${workId}`;
+  }
   if (pageId === "service-detail" && serviceId) {
     return `/services/${serviceId}`;
   }
@@ -67,28 +75,45 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [route]);
 
-  const navigateTo = (pageId, serviceId) => {
+  const navigateTo = (pageId, serviceId, workId) => {
     let targetPage = pageId;
     let targetServiceId = serviceId || null;
+    let targetWorkId = workId || null;
 
     if (typeof pageId === "string" && pageId.startsWith("services/")) {
-      targetServiceId = pageId.replace("services/", "");
-      targetPage = "service-detail";
-    } else if (pageId === "service-detail" && serviceId) {
+      const parts = pageId.replace("services/", "").split("/").filter(Boolean);
+      if (parts.length === 1) {
+        targetPage = "service-detail";
+        targetServiceId = parts[0];
+      } else if (parts.length >= 2) {
+        targetPage = "work-detail";
+        targetServiceId = parts[0];
+        targetWorkId = parts[1];
+      }
+    } else if (pageId === "work-detail") {
+      targetServiceId = serviceId;
+      targetWorkId = workId;
+    } else if (pageId === "service-detail") {
       targetServiceId = serviceId;
     }
 
-    const path = getPathFromPage(targetPage, targetServiceId);
+    const path = getPathFromPage(targetPage, targetServiceId, targetWorkId);
 
     if (window.location.pathname !== path) {
       window.history.pushState({}, "", path);
     }
 
-    setRoute({ page: targetPage, serviceId: targetServiceId });
+    setRoute({
+      page: targetPage,
+      serviceId: targetServiceId,
+      workId: targetWorkId,
+    });
   };
 
   const navCurrentPage =
-    route.page === "service-detail" ? "services" : route.page;
+    route.page === "service-detail" || route.page === "work-detail"
+      ? "services"
+      : route.page;
 
   return (
     <div className="min-h-screen flex flex-col bg-pragmatto-bgLight text-slate-800 antialiased font-sans">
@@ -102,6 +127,13 @@ export default function App() {
         {route.page === "service-detail" && (
           <ServiceDetailPage
             serviceId={route.serviceId}
+            onNavigate={navigateTo}
+          />
+        )}
+        {route.page === "work-detail" && (
+          <WorkDetailPage
+            serviceId={route.serviceId}
+            workId={route.workId}
             onNavigate={navigateTo}
           />
         )}
