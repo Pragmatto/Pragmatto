@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import multer from "multer";
 import nodemailer from "nodemailer";
 import path from "path";
+import fs from "fs";
 
 dotenv.config();
 
@@ -347,9 +348,35 @@ app.use((err, req, res, next) => {
 // 1. Serve actual files from dist (JS, CSS, images, etc.)
 app.use(express.static(path.join(process.cwd(), "dist")));
 
-// 2. Handle React routes such as /careers and /contact
+// 2. Handle React routes with pre-rendered SEO pages and 404 fallback
 app.get("*", (req, res) => {
-  res.sendFile(path.join(process.cwd(), "dist", "index.html"));
+  const reqPath = req.path.replace(/\/+$/, "") || "/";
+
+  // Check if a pre-rendered route HTML file exists (e.g. dist/services/index.html)
+  if (reqPath !== "/") {
+    const potentialHtml = path.join(process.cwd(), "dist", reqPath, "index.html");
+    if (fs.existsSync(potentialHtml)) {
+      return res.sendFile(potentialHtml);
+    }
+  }
+
+  // Check if root index.html exists
+  const rootIndex = path.join(process.cwd(), "dist", "index.html");
+  if (reqPath === "/" && fs.existsSync(rootIndex)) {
+    return res.sendFile(rootIndex);
+  }
+
+  // If path is unknown, return genuine 404 status and 404.html
+  const notFoundHtml = path.join(process.cwd(), "dist", "404.html");
+  if (fs.existsSync(notFoundHtml)) {
+    return res.status(404).sendFile(notFoundHtml);
+  }
+
+  if (fs.existsSync(rootIndex)) {
+    return res.sendFile(rootIndex);
+  }
+
+  res.status(404).send("Not Found");
 });
 
 app.listen(PORT, () => {

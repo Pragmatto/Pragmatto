@@ -1,4 +1,4 @@
-import { siteContent } from "./siteContent";
+import { siteContent } from "./siteContent.js";
 
 export const slugify = (text) => {
   if (!text) return "";

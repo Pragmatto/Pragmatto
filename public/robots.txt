@@ -1,0 +1,8 @@
+# Robots.txt for Pragmatto Solutions
+# Production Domain: https://pragmatto.com
+
+User-agent: *
+Allow: /
+
+# Sitemap Reference
+Sitemap: https://pragmatto.com/sitemap.xml

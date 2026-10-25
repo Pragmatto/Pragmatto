@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { StickyAnnouncementBar } from "./components/layout/StickyAnnouncementBar";
 import { Navbar } from "./components/layout/Navbar";
 import { Footer } from "./components/layout/Footer";
+import { SEO } from "./components/common/SEO";
 
 import { HomePage } from "./pages/Home";
 import { ServicesPage } from "./pages/Services";
@@ -11,30 +12,57 @@ import { AboutPage } from "./pages/About";
 import { CareersPage } from "./pages/Careers";
 import { ContactPage } from "./pages/Contact";
 import { PrivacyPolicyPage } from "./pages/PrivacyPolicy";
+import { NotFoundPage } from "./pages/NotFound";
+
+import { siteContent } from "./data/siteContent";
+import { slugify } from "./data/workDetails";
+import { getPageSEO, SITE_DOMAIN } from "./data/seoMetadata";
 
 const getPageFromPath = () => {
-  const path = window.location.pathname;
+  const path = window.location.pathname.replace(/\/+$/, "") || "/";
 
+  if (path === "/" || path === "") {
+    return { page: "home", serviceId: null, workId: null };
+  }
   if (path === "/services") {
     return { page: "services", serviceId: null, workId: null };
   }
   if (path.startsWith("/services/")) {
     const raw = path.replace("/services/", "");
     const parts = raw.split("/").filter(Boolean);
+
     if (parts.length === 1) {
-      return { page: "service-detail", serviceId: parts[0], workId: null };
+      const serviceExists = siteContent.services.some((s) => s.id === parts[0]);
+      if (serviceExists) {
+        return { page: "service-detail", serviceId: parts[0], workId: null };
+      }
+      return { page: "not-found", serviceId: null, workId: null };
     }
-    if (parts.length >= 2) {
-      return { page: "work-detail", serviceId: parts[0], workId: parts[1] };
+
+    if (parts.length === 2) {
+      const service = siteContent.services.find((s) => s.id === parts[0]);
+      if (service) {
+        const workExists = service.features.some(
+          (f) =>
+            slugify(f) === parts[1] ||
+            f.toLowerCase() === parts[1].replace(/-/g, " ").toLowerCase(),
+        );
+        if (workExists) {
+          return { page: "work-detail", serviceId: parts[0], workId: parts[1] };
+        }
+      }
+      return { page: "not-found", serviceId: null, workId: null };
     }
-    return { page: "services", serviceId: null, workId: null };
+
+    return { page: "not-found", serviceId: null, workId: null };
   }
+
   if (path === "/about") return { page: "about", serviceId: null, workId: null };
   if (path === "/careers") return { page: "careers", serviceId: null, workId: null };
   if (path === "/contact") return { page: "contact", serviceId: null, workId: null };
   if (path === "/privacy-policy") return { page: "privacy-policy", serviceId: null, workId: null };
 
-  return { page: "home", serviceId: null, workId: null };
+  return { page: "not-found", serviceId: null, workId: null };
 };
 
 const getPathFromPage = (pageId, serviceId, workId) => {
@@ -44,14 +72,12 @@ const getPathFromPage = (pageId, serviceId, workId) => {
   if (pageId === "service-detail" && serviceId) {
     return `/services/${serviceId}`;
   }
-  if (typeof pageId === "string" && pageId.startsWith("services/")) {
-    return `/${pageId}`;
-  }
   if (pageId === "services") return "/services";
   if (pageId === "about") return "/about";
   if (pageId === "careers") return "/careers";
   if (pageId === "contact") return "/contact";
   if (pageId === "privacy-policy") return "/privacy-policy";
+  if (pageId === "not-found") return "/404";
 
   return "/";
 };
@@ -115,8 +141,42 @@ export default function App() {
       ? "services"
       : route.page;
 
+  const currentSEO = getPageSEO(route);
+
+  // Global Organization Schema for Structured Data
+  const orgSchema =
+    route.page === "home"
+      ? {
+          "@context": "https://schema.org",
+          "@type": "ProfessionalService",
+          name: "Pragmatto Solutions",
+          url: SITE_DOMAIN,
+          logo: `${SITE_DOMAIN}/logo.png`,
+          description: currentSEO.description,
+          email: "info@pragmatto.com",
+          address: {
+            "@type": "PostalAddress",
+            addressCountry: "US",
+          },
+          sameAs: [
+            "https://www.linkedin.com/company/pragmatto/posts/?feedView=all",
+            "https://www.facebook.com/profile.php?id=61591354486980",
+          ],
+        }
+      : undefined;
+
   return (
     <div className="min-h-screen flex flex-col bg-pragmatto-bgLight text-slate-800 antialiased font-sans">
+      {/* Route-level SEO Metadata */}
+      <SEO
+        title={currentSEO.title}
+        description={currentSEO.description}
+        canonical={currentSEO.canonical}
+        type={currentSEO.type}
+        noindex={currentSEO.noindex}
+        structuredData={orgSchema}
+      />
+
       <StickyAnnouncementBar onNavigate={navigateTo} />
 
       <Navbar currentPage={navCurrentPage} onNavigate={navigateTo} />
@@ -142,6 +202,9 @@ export default function App() {
         {route.page === "contact" && <ContactPage onNavigate={navigateTo} />}
         {route.page === "privacy-policy" && (
           <PrivacyPolicyPage onNavigate={navigateTo} />
+        )}
+        {route.page === "not-found" && (
+          <NotFoundPage onNavigate={navigateTo} />
         )}
       </div>
 
