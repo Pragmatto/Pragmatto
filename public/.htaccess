@@ -1,0 +1,20 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # 1. Enforce preferred canonical domain: https://pragmatto.com (HTTPS, non-www)
+  # Redirect www.pragmatto.com to pragmatto.com
+  RewriteCond %{HTTP_HOST} ^www\.pragmatto\.com$ [NC]
+  RewriteRule ^(.*)$ https://pragmatto.com/$1 [R=301,L]
+
+  # Redirect HTTP to HTTPS
+  RewriteCond %{HTTPS} off
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteCond %{HTTP_HOST} ^(www\.)?pragmatto\.com$ [NC]
+  RewriteRule ^(.*)$ https://pragmatto.com/$1 [R=301,L]
+
+  # 2. Strip trailing slash on subpaths for SEO canonical consistency (except root /)
+  RewriteCond %{REQUEST_METHOD} =GET
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{THE_REQUEST} \s/(.+?)/+[?\s]
+  RewriteRule ^(.+?)/+$ https://pragmatto.com/$1 [R=301,L]
+</IfModule>

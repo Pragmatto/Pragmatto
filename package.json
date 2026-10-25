@@ -9,6 +9,7 @@
     "start": "node server/index.js",
     "generate:seo": "node scripts/generate-seo.js",
     "postbuild:seo": "node scripts/postbuild-seo.js",
+    "test:redirects": "node scripts/test-redirects.mjs",
     "build": "node scripts/generate-seo.js && vite build && node scripts/postbuild-seo.js",
     "preview": "vite preview"
   },

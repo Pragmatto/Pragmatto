@@ -11,7 +11,9 @@ export function SEO({
   noindex = false,
   structuredData,
 }) {
-  const currentCanonical = canonical || `${SITE_DOMAIN}${window?.location?.pathname || ""}`;
+  const rawPath = typeof window !== "undefined" && window.location ? window.location.pathname : "";
+  const cleanPath = rawPath === "/" ? "/" : rawPath.replace(/\/+$/, "");
+  const currentCanonical = canonical || (cleanPath ? `${SITE_DOMAIN}${cleanPath}` : `${SITE_DOMAIN}/`);
   const pageTitle = title || "Pragmatto Solutions | Technology Delivery Partner";
   const pageDesc =
     description ||

@@ -12,6 +12,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const projectRoot = path.resolve(__dirname, "..");
 const distDir = path.join(projectRoot, "dist");
+const publicDir = path.join(projectRoot, "public");
 
 function ensureDirectoryExists(dir) {
   if (!fs.existsSync(dir)) {
@@ -108,6 +109,13 @@ function run() {
   };
   const notFoundHTML = injectMetadataIntoHTML(baseHTML, notFoundMeta);
   fs.writeFileSync(path.join(distDir, "404.html"), notFoundHTML, "utf-8");
+
+  // Ensure .htaccess is in dist/ for Apache/LiteSpeed web servers
+  const publicHtaccess = path.join(publicDir, ".htaccess");
+  if (fs.existsSync(publicHtaccess)) {
+    fs.copyFileSync(publicHtaccess, path.join(distDir, ".htaccess"));
+    console.log("✓ Synchronized .htaccess into dist/");
+  }
 
   console.log(`✓ Pre-rendered static SEO entry points for ${generatedCount} canonical routes.`);
   console.log("✓ Pre-rendered dist/404.html for unknown route handling.");

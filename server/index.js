@@ -5,6 +5,13 @@ import multer from "multer";
 import nodemailer from "nodemailer";
 import path from "path";
 import fs from "fs";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const distPath = fs.existsSync(path.join(__dirname, "..", "dist"))
+  ? path.join(__dirname, "..", "dist")
+  : path.join(process.cwd(), "dist");
 
 dotenv.config();
 
@@ -14,6 +21,80 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// ============================================================================
+// CANONICAL HOST & PROTOCOL ENFORCEMENT MIDDLEWARE
+// ============================================================================
+// Preferred canonical domain: https://pragmatto.com (HTTPS, non-www)
+// Permanently redirects (301):
+//   - http://pragmatto.com/      -> https://pragmatto.com/
+//   - http://www.pragmatto.com/  -> https://pragmatto.com/
+//   - https://www.pragmatto.com/ -> https://pragmatto.com/
+//   - All subpaths (e.g. /services, /about, /services/:id/:work)
+//   - Trailing slashes on subpaths (e.g. /services/ -> /services)
+// Safely bypasses local development (localhost, 127.0.0.1)
+const CANONICAL_HOST = "pragmatto.com";
+const CANONICAL_ORIGIN = `https://${CANONICAL_HOST}`;
+
+// Enable reverse proxy trusting for Hostinger CDN / Cloudflare / Load Balancers
+app.enable("trust proxy");
+
+app.use((req, res, next) => {
+  const rawHost = req.headers["x-forwarded-host"] || req.headers.host || "";
+  const host = rawHost.split(":")[0].toLowerCase();
+
+  // Bypass redirects in local development and test environments
+  const isLocal =
+    host === "localhost" ||
+    host === "127.0.0.1" ||
+    host === "::1" ||
+    host.endsWith(".local") ||
+    host.endsWith(".internal");
+
+  if (isLocal) {
+    return next();
+  }
+
+  // Determine if incoming connection is HTTPS
+  const forwardedProto = req.headers["x-forwarded-proto"];
+  const isHttps =
+    req.secure ||
+    forwardedProto === "https" ||
+    (typeof forwardedProto === "string" &&
+      forwardedProto.split(",")[0].trim() === "https") ||
+    (req.headers["cf-visitor"] &&
+      req.headers["cf-visitor"].includes('"scheme":"https"'));
+
+  // Normalize path: retain root / but strip trailing slashes on subpages
+  const originalPath = req.path;
+  const hasTrailingSlash =
+    originalPath.length > 1 && originalPath.endsWith("/");
+  const normalizedPath = hasTrailingSlash
+    ? originalPath.replace(/\/+$/, "")
+    : originalPath;
+
+  // Preserve any query strings (e.g. ?ref=...)
+  const queryIndex = req.originalUrl.indexOf("?");
+  const queryString = queryIndex !== -1 ? req.originalUrl.slice(queryIndex) : "";
+
+  const needsHostRedirect = host !== CANONICAL_HOST;
+  const needsHttpsRedirect = !isHttps;
+  const needsTrailingSlashRedirect = hasTrailingSlash;
+
+  if (needsHostRedirect || needsHttpsRedirect || needsTrailingSlashRedirect) {
+    const targetUrl = `${CANONICAL_ORIGIN}${normalizedPath}${queryString}`;
+
+    // Safety guard against recursive self-redirection
+    const currentUrl = `${isHttps ? "https" : "http"}://${host}${req.originalUrl}`;
+    if (targetUrl === currentUrl) {
+      return next();
+    }
+
+    return res.redirect(301, targetUrl);
+  }
+
+  next();
+});
 
 // Configure Multer for in-memory file uploads with 10MB strict limit
 const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
@@ -345,8 +426,8 @@ app.use((err, req, res, next) => {
   next();
 });
 
-// 1. Serve actual files from dist (JS, CSS, images, etc.)
-app.use(express.static(path.join(process.cwd(), "dist")));
+// 1. Serve actual files from dist (JS, CSS, images, etc.) without directory trailing slash auto-redirect
+app.use(express.static(distPath, { redirect: false, index: false }));
 
 // 2. Handle React routes with pre-rendered SEO pages and 404 fallback
 app.get("*", (req, res) => {
@@ -354,20 +435,20 @@ app.get("*", (req, res) => {
 
   // Check if a pre-rendered route HTML file exists (e.g. dist/services/index.html)
   if (reqPath !== "/") {
-    const potentialHtml = path.join(process.cwd(), "dist", reqPath, "index.html");
+    const potentialHtml = path.join(distPath, reqPath, "index.html");
     if (fs.existsSync(potentialHtml)) {
       return res.sendFile(potentialHtml);
     }
   }
 
   // Check if root index.html exists
-  const rootIndex = path.join(process.cwd(), "dist", "index.html");
+  const rootIndex = path.join(distPath, "index.html");
   if (reqPath === "/" && fs.existsSync(rootIndex)) {
     return res.sendFile(rootIndex);
   }
 
   // If path is unknown, return genuine 404 status and 404.html
-  const notFoundHtml = path.join(process.cwd(), "dist", "404.html");
+  const notFoundHtml = path.join(distPath, "404.html");
   if (fs.existsSync(notFoundHtml)) {
     return res.status(404).sendFile(notFoundHtml);
   }

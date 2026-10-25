@@ -71,7 +71,10 @@ function run() {
   if (fs.existsSync(distDir)) {
     fs.writeFileSync(path.join(distDir, "sitemap.xml"), sitemapContent, "utf-8");
     fs.writeFileSync(path.join(distDir, "robots.txt"), robotsContent, "utf-8");
-    console.log("✓ Synchronized sitemap.xml and robots.txt into dist/");
+    if (fs.existsSync(path.join(publicDir, ".htaccess"))) {
+      fs.copyFileSync(path.join(publicDir, ".htaccess"), path.join(distDir, ".htaccess"));
+    }
+    console.log("✓ Synchronized sitemap.xml, robots.txt, and .htaccess into dist/");
   }
 
   console.log("=== SEO Generation Complete ===");
