@@ -2,15 +2,23 @@ import React from "react";
 import { siteContent, PRAGMATTO_LOGO_URL } from "../../data/siteContent";
 import { Mail, Linkedin } from "lucide-react";
 import { FaFacebookF } from "react-icons/fa";
+import { useLenis } from "../common/SmoothScroll";
 
 export function Footer({ onNavigate }) {
   const { company } = siteContent;
+  const lenis = useLenis();
 
   const handleLinkClick = (id) => {
     if (onNavigate) {
       onNavigate(id);
     }
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    if (lenis && typeof lenis.scrollTo === "function") {
+      lenis.scrollTo(0);
+    } else if (typeof window.__lenis?.scrollTo === "function") {
+      window.__lenis.scrollTo(0);
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   };
 
   return (

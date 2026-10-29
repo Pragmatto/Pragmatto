@@ -17,6 +17,7 @@ import { NotFoundPage } from "./pages/NotFound";
 import { siteContent } from "./data/siteContent";
 import { slugify } from "./data/workDetails";
 import { getPageSEO, SITE_DOMAIN } from "./data/seoMetadata";
+import { useLenis } from "./components/common/SmoothScroll";
 
 const getPageFromPath = () => {
   const path = window.location.pathname.replace(/\/+$/, "") || "/";
@@ -84,6 +85,7 @@ const getPathFromPage = (pageId, serviceId, workId) => {
 
 export default function App() {
   const [route, setRoute] = useState(getPageFromPath);
+  const lenis = useLenis();
 
   useEffect(() => {
     const handlePopState = () => {
@@ -98,8 +100,25 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [route]);
+    if (lenis && typeof lenis.scrollTo === "function") {
+      lenis.scrollTo(0, { immediate: true });
+    } else if (typeof window.__lenis?.scrollTo === "function") {
+      window.__lenis.scrollTo(0, { immediate: true });
+    } else {
+      window.scrollTo(0, 0);
+    }
+
+    // Recalculate dimensions for the newly rendered page route
+    const rafId = requestAnimationFrame(() => {
+      if (lenis && typeof lenis.resize === "function") {
+        lenis.resize();
+      } else if (typeof window.__lenis?.resize === "function") {
+        window.__lenis.resize();
+      }
+    });
+
+    return () => cancelAnimationFrame(rafId);
+  }, [route, lenis]);
 
   const navigateTo = (pageId, serviceId, workId) => {
     let targetPage = pageId;

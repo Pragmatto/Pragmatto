@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import { PRAGMATTO_LOGO_URL } from "../../data/siteContent";
 import { Button } from "../ui/Button";
 import { Menu, X, ChevronRight } from "lucide-react";
+import { useLenis } from "../common/SmoothScroll";
 
 export function Navbar({ currentPage, onNavigate }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const lenis = useLenis();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,7 +33,13 @@ export function Navbar({ currentPage, onNavigate }) {
       onNavigate(id);
     }
     setMobileMenuOpen(false);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    if (lenis && typeof lenis.scrollTo === "function") {
+      lenis.scrollTo(0);
+    } else if (typeof window.__lenis?.scrollTo === "function") {
+      window.__lenis.scrollTo(0);
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   };
 
   return (
